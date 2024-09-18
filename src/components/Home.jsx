@@ -16,8 +16,6 @@ import { ReactTyped } from 'react-typed'
 import { ScrollTrigger } from "gsap/all";
 import Tooltip from "./Tooltip";
 import mount from '../assets/rock1.webp'
-import Scrollbar from 'smooth-scrollbar'
-import HomeSide from '../components/HomeSide'
 
 const Home = () => {
     // useEffect(() => {

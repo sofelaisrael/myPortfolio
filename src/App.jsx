@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import Testing from './routes/Testing'
 import Navbar from './components/Navbar'
 import Lenis from '@studio-freight/lenis'
 import gsap from 'gsap'
