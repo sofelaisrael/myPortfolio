@@ -55,7 +55,7 @@ html {
 body {
     margin: 0;
     padding: 0;
-    cursor: none;
+    /* cursor: none; */
     background: #0a0a0a;
     font-family: 'Montlight';
     overflow-x: hidden;
