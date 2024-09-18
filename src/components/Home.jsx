@@ -302,30 +302,30 @@ const Home = () => {
             li.style.textAlign = 'left'
         })
     })
-    useEffect(() => {
-        const cursor = document.querySelector('#magicMouseCursor')
-        cursor.style.visibility = 'hidden'
+    // useEffect(() => {
+    //     const cursor = document.querySelector('#magicMouseCursor')
+    //     cursor.style.visibility = 'hidden'
 
 
-        window.onmousemove = () => {
-            cursor.style.visibility = 'visible'
-        }
+    //     window.onmousemove = () => {
+    //         cursor.style.visibility = 'visible'
+    //     }
 
-        const icon = document.querySelectorAll('.icons')
-        icon.forEach(ic => {
-            ic.onmouseover = () => {
-                ic.classList.add('active')
-                let rect = ic.getBoundingClientRect();
-                cursor.style.width = `${rect.width}px`
-                console.log(cursor.getBoundingClientRect().width, rect.width);
+    //     const icon = document.querySelectorAll('.icons')
+    //     icon.forEach(ic => {
+    //         ic.onmouseover = () => {
+    //             ic.classList.add('active')
+    //             let rect = ic.getBoundingClientRect();
+    //             cursor.style.width = `${rect.width}px`
+    //             console.log(cursor.getBoundingClientRect().width, rect.width);
 
 
-            }
-            ic.onmouseout = () => {
-                ic.classList.remove('active')
-            }
-        })
-    })
+    //         }
+    //         ic.onmouseout = () => {
+    //             ic.classList.remove('active')
+    //         }
+    //     })
+    // })
     useEffect(() => {
         document.getElementById('card').onmousemove = (e) => {
             for (const card of document.querySelectorAll('.card')) {
