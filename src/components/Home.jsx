@@ -41,54 +41,54 @@ const Home = () => {
     //     })
     // })
 
-    useEffect(() => {
-        let width = 145;
-        let height = 28;
+    // useEffect(() => {
+    //     let width = 145;
+    //     let height = 28;
 
-        let fireChars = " ,;+ltgti!lI?/\\|)(1}{][rcvzjftJUOQocxfXhqwWB8&%$#@"
-        let maxCharIndex = fireChars.length
+    //     let fireChars = " ,;+ltgti!lI?/\\|)(1}{][rcvzjftJUOQocxfXhqwWB8&%$#@"
+    //     let maxCharIndex = fireChars.length
 
-        let firePixelsArray = [];
+    //     let firePixelsArray = [];
 
-        for (let i = 0; i < width * height + 1; i++) {
-            firePixelsArray[i] = 0;
-        }
+    //     for (let i = 0; i < width * height + 1; i++) {
+    //         firePixelsArray[i] = 0;
+    //     }
 
-        const generateFire = () => {
-            let fireString = "";
+    //     const generateFire = () => {
+    //         let fireString = "";
 
-            for (let i = 0; i < width; i++) {
-                let randomCol = Math.floor(Math.random() * width);
-                let index = randomCol + width * (height - 1);
-                firePixelsArray[index] = Math.floor(Math.random() * maxCharIndex);
-            }
+    //         for (let i = 0; i < width; i++) {
+    //             let randomCol = Math.floor(Math.random() * width);
+    //             let index = randomCol + width * (height - 1);
+    //             firePixelsArray[index] = Math.floor(Math.random() * maxCharIndex);
+    //         }
 
-            for (let i = 0; i < width; i++) {
-                let randomCol = Math.floor(Math.random() * width);
-                let index = randomCol + width * (height - 1);
-                firePixelsArray[index] = 0;
-            }
+    //         for (let i = 0; i < width; i++) {
+    //             let randomCol = Math.floor(Math.random() * width);
+    //             let index = randomCol + width * (height - 1);
+    //             firePixelsArray[index] = 0;
+    //         }
 
-            for (let i = 0; i < width * (height - 1); i++) {
-                let averageValue =
-                    (firePixelsArray[i] +
-                        firePixelsArray[i + 1] +
-                        firePixelsArray[i + width] +
-                        firePixelsArray[i + width + 1]) /
-                    4;
+    //         for (let i = 0; i < width * (height - 1); i++) {
+    //             let averageValue =
+    //                 (firePixelsArray[i] +
+    //                     firePixelsArray[i + 1] +
+    //                     firePixelsArray[i + width] +
+    //                     firePixelsArray[i + width + 1]) /
+    //                 4;
 
-                firePixelsArray[i] = Math.floor(averageValue);
+    //             firePixelsArray[i] = Math.floor(averageValue);
 
-                fireString += fireChars[firePixelsArray[i]];
-                if (i % width === 0) fireString += `\n`;
-            }
+    //             fireString += fireChars[firePixelsArray[i]];
+    //             if (i % width === 0) fireString += `\n`;
+    //         }
 
-            document.getElementById("fire").innerText = fireString;
-            setTimeout(generateFire, 30);
-        };
+    //         document.getElementById("fire").innerText = fireString;
+    //         setTimeout(generateFire, 30);
+    //     };
 
-        generateFire();
-    }, [])
+    //     generateFire();
+    // }, [])
     useEffect(() => {
         const text = new SplitText('#name', { type: 'chars' })
         gsap.to(text.chars, {
