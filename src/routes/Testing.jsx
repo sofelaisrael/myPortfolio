@@ -1,12 +1,4 @@
-import { AiOutlineHtml5 } from "react-icons/ai"; 
 import React, { useEffect, useState } from 'react'
-import anime from 'animejs'
-import Particle from '../components/particles'
-import logo from '../assets/react.svg'
-import SplitText from 'split-type'
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/all'
 
 const Testing = () => {
 
@@ -26,16 +18,16 @@ const Testing = () => {
     //         hovtarg.style.display = 'none'
     //     }
     // }
-    useEffect(() => {
-        // hash('about', 'hash')
+    // useEffect(() => {
+    //     // hash('about', 'hash')
 
-        // const heading = new SplitText('.heading', {type: 'chars'})
-        // gsap.to(heading.chars, {
-        //     x: '100%',
-        //     duration: 0.4
-        // })
+    //     // const heading = new SplitText('.heading', {type: 'chars'})
+    //     // gsap.to(heading.chars, {
+    //     //     x: '100%',
+    //     //     duration: 0.4
+    //     // })
 
-    })
+    // })
 
     return (
         <div className="text-white px-10 py-28">
