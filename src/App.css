@@ -4,12 +4,12 @@
 
 @font-face {
     font-family: 'Montlight';
-    src: url('../public/Montserrat-Light.ttf');
+    src: url('../Montserrat-Light.ttf');
 }
 
 @font-face {
     font-family: 'Montbold';
-    src: url('../public/Montserrat-Bold.ttf');
+    src: url('../Montserrat-Bold.ttf');
 }
 
 html.lenis,
@@ -43,19 +43,20 @@ html.lenis body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: white;
     border-radius: 10px;
+    background-color: white;
 }
 
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
     margin: 0;
     padding: 0;
-    /* cursor: none; */
+    cursor: none;
     background: #0a0a0a;
     font-family: 'Montlight';
     overflow-x: hidden;
@@ -65,16 +66,29 @@ body {
     z-index: 1000;
 }
 
-#magicPointer {
-    transform: matrix(1, 0, 0, 1, 878, 395) translate3d(-50%, -50%, 0px);
-    z-index: 1000000000000000;
+
+.circ {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    border: 1px solid white;
+    transform-origin: center;
+    pointer-events: none;
+
 }
 
-#magicMouseCursor {
-    transform: matrix(2, 0, 0, 1, 852, 231);
-    background-color: rgba(233, 233, 233, 0.423);
-    transition: width 0.2s, height 0.2s;
+.circ::after {
+    position: absolute;
+    content: '';
+    left: 50%;
+    top: 50%;
+    width: 3px;
+    height: 3px;
+    background-color: #fff;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
 }
+
 
 .container {
     background-color: #414141;
@@ -186,8 +200,11 @@ body {
 }
 
 .active:hover>.spac {
+    width: 50%;
     opacity: 1;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .name {
@@ -308,6 +325,8 @@ body {
     left: 0;
 }
 
+
+
 #about,
 #contact,
 #projects {
@@ -337,8 +356,8 @@ body {
     position: absolute;
     top: 0;
     right: -4px;
-    background-color: #0a0a0a99;
-    /* opacity: 0.75; */
+    background-color: #0a0a0a;
+    opacity: 0.5;
     width: 150%;
     height: 100%;
     z-index: 2;
@@ -410,21 +429,20 @@ body {
 
 #card {
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    /* max-width: 920px; */
-    width: calc(100% - 20px);
+    gap: 40px;
+    flex-direction: column;
     z-index: 100;
-    margin: 0 auto;
+    /* margin: 0 auto; */
 }
 
 .card {
     /* border: 1px solid rgba(255, 255, 255, 0.1); */
+    margin: 0 auto;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     flex-grow: 1;
-    height: 400px;
-    width: 400px;
+    height: 500px;
+    width: 70%;
     position: relative;
     overflow: hidden;
     /* background-color: rgba(255, 255, 255, 0.02); */
@@ -435,38 +453,28 @@ body {
     opacity: 1;
 }
 
-.card::before,
-.card>.card-border {
-    position: absolute;
-    border-radius: inherit;
-    content: '';
-    opacity: 0;
-    transition: opacity 0.5s;
-    height: 100%;
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* z-index: 2; */
+
+.card:hover>.card-content {
+    bottom: -68%;
 }
 
-.card>.card-border {
-    background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.3), transparent 40%);
-    z-index: 10;
-}
+@media screen and (max-width: 768px) {
 
-.card::before {
-    background: radial-gradient(900px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.02), transparent 40%);
-    z-index: 100;
-
+    .card:hover>.card-content {
+        bottom: -55%;
+    }
 }
 
 .card>.card-content {
-    background-color: rgba(10, 10, 10, 0.95);
+    background-color: black;
     border-radius: inherit;
-    height: calc(100% - 2px);
-    width: calc(100% - 2px);
-    margin: 1px;
-    position: relative;
+    height: calc(100%);
+    width: calc(100%);
+    position: absolute;
+    bottom: -100%;
+    transition: all 1s;
+    /* border: 1px solid white; */
+    overflow: hidden;
     z-index: 500;
 }
 
@@ -662,4 +670,124 @@ body {
     to {
         transform: rotate(360deg);
     }
+}
+
+
+.grad {
+    background: -webkit-linear-gradient(left, #eee, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.loa {
+    animation: loaded 5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform: skewX(20deg);
+    left: 150%;
+}
+
+.loa2 {
+    animation: loaded2 5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform: skewX(20deg);
+    left: -200%;
+}
+
+@media screen and (max-width: 768px) {
+
+    .loa,
+    .loa2 {
+        animation-duration: 2s;
+    }
+}
+
+@keyframes loaded {
+    from {
+        display: block;
+        left: 0%;
+    }
+
+    to {
+        left: 0%;
+    }
+
+    to {
+        left: 150%;
+    }
+}
+
+@keyframes loaded2 {
+    from {
+        display: block;
+        left: -40%;
+    }
+
+    to {
+        left: -40%;
+    }
+
+    to {
+        left: -200%;
+    }
+}
+
+.naag div:first-child {
+    /* --cp: 0%; */
+    /* border: 1px solid white; */
+    /* height: 150px; */
+    z-index: 1000;
+    /* bottom: -110px; */
+    /* transition: clip-path 100ms; */
+    /* transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); */
+    background: white;
+    transform: translate(-50%, -50%);
+    color: black;
+    clip-path: circle(var(--cp) at var(--cx) var(--cy));
+}
+
+.radgrad {
+    height: 100vw;
+    width: 100vw;
+    scale: 1.2;
+    transform-origin: top;
+    background: repeating-radial-gradient(#0a0a0a, #eee 20%);
+    opacity: .1;
+    transition: all .2s;
+}
+
+.bgdrop {
+    height: 100vh;
+    width: 100vw;
+    left: 0;
+    background: linear-gradient(#0a0a0a, transparent 70%);
+}
+
+.bgdrop2 {
+    height: 100vh;
+    width: 100vw;
+    left: 0;
+    background: linear-gradient(transparent, #0a0a0a);
+}
+
+/* .radgrad:hover{
+    
+    background: repeating-radial-gradient(#eee, #333);
+} */
+
+.activenav {
+    color: #0a0a0a;
+    font-weight: 900;
+    z-index: 1000000;
+}
+
+.slider {
+    background: #eee;
+    color: black;
+    font-weight: bold;
+    border-radius: 5px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    transition: all .2s;
+    align-items: center;
+    position: absolute;
 }

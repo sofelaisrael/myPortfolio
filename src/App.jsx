@@ -5,6 +5,7 @@ import Lenis from '@studio-freight/lenis'
 import gsap from 'gsap'
 import Home from './components/Home'
 import { ScrollTrigger } from 'gsap/all'
+import Testing from './routes/Testing'
 
 function App() {
   const [load, setLoad] = useState(true)
@@ -19,13 +20,62 @@ function App() {
     })
 
     gsap.ticker.lagSmoothing(0)
-    
+
     window.onload = () => {
       setTimeout(() => {
         setLoad(false)
-      }, 1000);
+      }, 3000);
     }
   }, [])
+  useEffect(() => {
+    const circ = document.querySelector('.circ')
+    // const circ2 = document.querySelector('.circ2')
+    const mouse = { x: 0, y: 0 }
+    const prevMouse = { x: 0, y: 0 }
+    const circle = { x: 0, y: 0 }
+    let curscale = 0
+    let curangle = 0
+
+    window.onmousemove = (e) => {
+      mouse.x = e.x
+      mouse.y = e.y
+    }
+
+    const speed = 0.3
+
+    const tick = () => {
+      circle.x += (mouse.x - circle.x) * speed
+      circle.y += (mouse.y - circle.y) * speed
+
+      const translatetransform = `translate(${circle.x - 15}px, ${circle.y - 15}px)`
+      // circ2.style.transform = `translate(${circle.x}px, ${circle.y}px)`
+
+      const deltax = mouse.x - prevMouse.x
+      const deltay = mouse.y - prevMouse.y
+
+      prevMouse.x = mouse.x
+      prevMouse.y = mouse.y
+
+      const vel = Math.min(Math.sqrt(deltax ** 2 + deltay ** 2) * 4, 150)
+
+      const scale = (vel / 150) * 0.5
+
+      curscale += (scale - curscale) * speed
+
+      const scaleTransform = `scale(${1 + curscale}, ${1 - curscale})`
+
+      const angle = Math.atan2(deltay, deltax) * 180 / Math.PI
+      if (vel > 20) curangle = angle
+      const rotTransform = `rotate(${curangle}deg)`
+
+
+
+      circ.style.transform = `${translatetransform} ${rotTransform} ${scaleTransform}`
+
+      window.requestAnimationFrame(tick)
+    }
+    tick()
+  })
 
   return (
     <>
@@ -157,9 +207,11 @@ function App() {
               </g>
             </svg>
           </div>
-        )
-      }
+        )}
       <div className='relative'>
+        <div className="circ z-[10000000000000] rounded-full"></div>
+        <div className="absolute w-[100vw] h-[100vh] bg-black top-[0%] loa z-[1000]"></div>
+        <div className="absolute w-[150vw] h-[100vh] bg-black top-[0%] loa2 z-[10000]"></div>
         <Navbar />
         {/* <Testing /> */}
         <Home />
@@ -168,6 +220,7 @@ function App() {
           <img className='bimg' src={mount} alt="" />
         </div> */}
       </div>
+
 
     </>
 

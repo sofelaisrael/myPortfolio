@@ -30,10 +30,11 @@ const Testing = () => {
     // })
 
     return (
-        <div className="text-white px-10 py-28">
-            <div className="h-[100vh] bg-white"></div>
+        <div className="text-white py-28">
+            {/* <div className="h-[100vh] bg-white"></div>
             <div className="h-[100vh] bg-black"></div>
-            <div className="h-[100vh] bg-white"></div>
+            <div className="h-[100vh] bg-white"></div> */}
+            {/* <div className="radgrad"></div> */}
         </div>
 
     )
