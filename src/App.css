@@ -94,7 +94,7 @@ html {
 }
 
 * {
-    cursor: none;
+    /* cursor: none; */
 }
 
 body {
@@ -385,7 +385,7 @@ body {
 @media screen and (max-width: 768px) {
 
     .card:hover>.card-content {
-        bottom: -55%;
+        bottom: -70%;
     }
 }
 

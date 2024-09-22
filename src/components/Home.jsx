@@ -441,7 +441,7 @@ const Home = () => {
     return (
         <div className='relative text-white overflow-hidden top-0 bg-transparent'>
 
-            <div className="circ z-[10000000000000] rounded-full"></div>
+            <div className="circ max-md:hidden z-[10000000000000] rounded-full"></div>
 
             <div className='text-white h-[120px] overflow-hidden p-5 bg-transparent z-[100000]  absolute flex justify-between w-full items-center'>
                 <div className="nav-brand flex relative bg-transparent">
@@ -702,26 +702,26 @@ const Home = () => {
                     </div>
 
                     <form id="form" className="lg:absolute form overflow-hidden border-[#404040] form w-[500px] top-0 rounded-xl gap-5 right-20  max-lg:mb-5 flex flex-col -translate-x-1/ max-lg:w-[90%] max-md:mx-auto border py-10 backdrop-blur-md" ref={form} onSubmit={shoot}>
-                        <div className="head text-[50px] pb-5 px-10">Message</div>
-                        <div className="nameinp flex border bg-[#0a0a0aa0] h-[50px] w-[80%] mx-auto items-center rounded-full overflow-hidden border-[inherit]">
+                        <div className="head text-[50px] max-md:text-[30px] md:pb-5 px-10 max-md:px-5">Shoot me</div>
+                        <div className="nameinp flex border bg-[#0a0a0aa0] h-[50px] w-[80%] max-md:w-[90%] mx-auto items-center rounded-full overflow-hidden border-[inherit]">
                             <div className="icon p-5 text-[28px]">
                                 <AiOutlineUser />
                             </div>
                             <input name="from_name" id="from_name" value={name} onChange={(e) => setName(e.target.value)} className="h-full w-full focus:outline-none bg-transparent" type="text" placeholder="Your name" />
                         </div>
-                        <div className="nameinp flex border bg-[#0a0a0aa0] h-[50px] w-[80%] mx-auto items-center rounded-full overflow-hidden border-[inherit]">
+                        <div className="nameinp flex border bg-[#0a0a0aa0] h-[50px] w-[80%] max-md:w-[90%] mx-auto items-center rounded-full overflow-hidden border-[inherit]">
                             <div className="icon p-5 text-[28px]">
                                 <GoMail />
                             </div>
                             <input id="email_id" name="email_id" value={email} onChange={(e) => setEmail(e.target.value)} className="h-full w-full focus:outline-none bg-transparent" type="text" placeholder="Your email" />
                         </div>
                         <div className="textarea w-full flex justify-center">
-                            <textarea id="message" name="message" value={message} onChange={(e) => setMessage(e.target.value)} className="resize-none w-[80%] rounded-lg placeholder:p-0 h-[150px]   focus:outline-none p-4 mx-auto border-[#404040] bg-transparent border" placeholder="Your Message....." ></textarea>
+                            <textarea id="message" name="message" value={message} onChange={(e) => setMessage(e.target.value)} className="resize-none w-[80%] max-md:w-[90%] rounded-lg placeholder:p-0 h-[150px]   focus:outline-none p-4 mx-auto border-[#404040] bg-transparent border" placeholder="Your Message....." ></textarea>
                         </div>
                         {sent ? (
                             <div className="sent text-center flex justify-center gap-5 items-center"><BsCheckLg />Sent Successfully!</div>
                         ) : (
-                            <button type="submit" disabled={!(validate(email) && name.trim() != '' && message.trim() != '')} className={`w-[80%] mx-auto rounded-full h-[50px] disabled:opacity-30 bg-white text-black`}>Shoot</button>
+                            <button type="submit" disabled={!(validate(email) && name.trim() != '' && message.trim() != '')} className={`w-[80%] max-md:w-[90%] mx-auto rounded-full h-[50px] disabled:opacity-30 bg-white text-black`}>Shoot</button>
                         )}
 
 

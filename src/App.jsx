@@ -176,8 +176,8 @@ function App() {
           </div>
         )}
       <div className='relative w-full'>
-        <div className="fixed lo z-[100000000] w-[70vw] h-[100vh] top-0 skew-x-12 bg-[#0a0a0a] loa -left-20"></div>
-        <div className="fixed lo z-[10000000] w-[70vw] h-[100vh] top-0 skew-x-12 bg-[#0a0a0a] loa2 -right-20"></div>
+        <div className="fixed lo z-[100000000] w-[70vw] h-[100vh] top-0 skew-x-12 bg-[#0a0a0a] loa md:-left-20"></div>
+        <div className="fixed lo z-[10000000] w-[70vw] h-[100vh] top-0 skew-x-12 bg-[#0a0a0a] loa2 md:-right-20"></div>
         <Home />
       </div>
 
