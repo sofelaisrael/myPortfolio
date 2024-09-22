@@ -29,7 +29,7 @@ const ContactSection = () => {
     }
     return (
         <section id="contact" className="contact-me overflow-hidden flex flex-col">
-            <div className="heading text-[50px] max-md:text-[28px] pb-10 z-[0] bg-[#0a0a0a] px-10">
+            <div className="heading text-[50px] max-md:text-[28px] pb-10 z-[0] bg-[#0a0a0a] px-5 md:px-10">
                 <span className="md:px-2">//</span>
                 Contact Me
                 <span id='hash' className="text-[#ff00ff] hash relative">#</span>

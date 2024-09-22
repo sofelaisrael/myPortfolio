@@ -305,6 +305,11 @@ body {
     height: 100%;
     z-index: 2;
 }
+@media screen and (max-width: 768px) {
+    #skills .line-mask{
+        opacity: 0;
+    }
+}
 
 
 /* gradient spinner */

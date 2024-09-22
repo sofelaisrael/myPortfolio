@@ -66,7 +66,7 @@ const AboutSection = () => {
             </div>
 
             <div className="flex max-lg:flex-col">
-                <div id="skills" className="skills pt-32 rounded-[30px] text-[60px] lg:w-[60%] max-lg:w-[90%] md:px-10 px-5 pb-10 font-extrabold leading-[65px] backdrop-blur-sm max-md:leading-[40px] border-0 max-md:text-[40px]">
+                <div id="skills" className="skills pt-16 md:pt-32 rounded-[30px] text-[60px] lg:w-[60%] max-lg:w-[90%] md:px-10 px-5 pb-10 font-extrabold leading-[65px] backdrop-blur-sm max-md:leading-[40px] border-0 max-md:text-[40px]">
                     Passionate and Creative Full Stack Developer
                     having Proficiency in MERN Stack. Attired with a variety of tools and technologies  and keen to learn a new one.
                 </div>

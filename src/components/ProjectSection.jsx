@@ -6,7 +6,7 @@ const ProjectSection = () => {
     const [more, setMore] = useState(true)
     return (
 
-        <section className="projects p-10 overflow-x-hidden" id="projects">
+        <section className="projects p-10 max-md:pt-20 max-md:p-5 overflow-x-hidden" id="projects">
             <div className="heading text-[50px] max-md:text-[28px] pb-10">
                 <span className="md:px-2">//</span>
                 My Projects
