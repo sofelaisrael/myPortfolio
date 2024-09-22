@@ -174,7 +174,6 @@ const Home = () => {
                         start: 'clamp(top 20%)',
                         end: 'clamp(600px center)',
                         scrub: true,
-                        markers: true
                     },
                     width: '0%',
                     duration: 4,
