@@ -33,7 +33,7 @@ function App() {
       left: '-200%',
       duration: 1.6,
       ease: 'expo.out',
-      delay: 5,
+      delay: 3,
     })
     gsap.to('.loa2', {
       right: '-200%',
