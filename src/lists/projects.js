@@ -10,7 +10,7 @@ export const projects = [
         projectcontent: 'SoftNotez is the connected workspace where better, faster, work happens, where your ideas, documents, & plans. unified',
         projectimage: img1,
         projectlanguages: 'React, TailwindCSS, MongoDB, ExpressJS',
-        projectlink: 'https://soft-notez.vercel.app'
+        projectlink: 'https://softnotez.vercel.app'
     },
     {
         id: 2,

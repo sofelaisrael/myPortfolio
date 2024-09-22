@@ -12,10 +12,10 @@ const Project = ({ img, content, name, link, lang }) => {
             </div>
             <div className="card-content flex flex-col relative gap-2 p-5">
                 <div className="flex justify-between items-center">
-                    <div className="projectname text-[32px] max-lg:text-[12px]">{name} <span className='opacity-60 text-[12px]'>( {lang} )</span> </div>
+                    <div className="projectname text-[32px] max-lg:text-[12px]">{name} <span className='opacity-60 text-[12px] max-sm:text-[6px]'>( {lang} )</span> </div>
                 </div>
                 
-                <Link to={link} target='_blank'>
+                <Link className='w-fit' to={link} target='_blank'>
                     <div className="btns flex items-center max-md:text-[12px] gap-2 border w-fit p-2 rounded-lg border-[#343434]">
                         Visit <CgArrowLongRight />
                     </div>

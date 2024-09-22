@@ -704,13 +704,13 @@ const Home = () => {
                     <form id="form" className="lg:absolute form overflow-hidden border-[#404040] form w-[500px] top-0 rounded-xl gap-5 right-20  max-lg:mb-5 flex flex-col -translate-x-1/ max-lg:w-[90%] max-md:mx-auto border py-10 backdrop-blur-md" ref={form} onSubmit={shoot}>
                         <div className="head text-[50px] max-md:text-[30px] md:pb-5 px-10 max-md:px-5">Shoot me</div>
                         <div className="nameinp flex border bg-[#0a0a0aa0] h-[50px] w-[80%] max-md:w-[90%] mx-auto items-center rounded-full overflow-hidden border-[inherit]">
-                            <div className="icon p-5 text-[28px]">
+                            <div className="icon p-5 text-[20px]">
                                 <AiOutlineUser />
                             </div>
                             <input name="from_name" id="from_name" value={name} onChange={(e) => setName(e.target.value)} className="h-full w-full focus:outline-none bg-transparent" type="text" placeholder="Your name" />
                         </div>
                         <div className="nameinp flex border bg-[#0a0a0aa0] h-[50px] w-[80%] max-md:w-[90%] mx-auto items-center rounded-full overflow-hidden border-[inherit]">
-                            <div className="icon p-5 text-[28px]">
+                            <div className="icon p-5 text-[20px]">
                                 <GoMail />
                             </div>
                             <input id="email_id" name="email_id" value={email} onChange={(e) => setEmail(e.target.value)} className="h-full w-full focus:outline-none bg-transparent" type="text" placeholder="Your email" />
