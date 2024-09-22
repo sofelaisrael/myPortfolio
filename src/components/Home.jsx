@@ -9,6 +9,7 @@ import ContactSection from './ContactSection';
 import AboutSection from './AboutSection';
 import Navbar from './Navbar';
 import HeroSection from './HeroSection';
+import gsap from 'gsap';
 
 const Home = () => {
     useEffect(() => {
@@ -121,7 +122,7 @@ const Home = () => {
 
             <div className="circ max-md:hidden z-[10000000000000] rounded-full"></div>
 
-            <Navbar/>
+            <Navbar />
 
             <HeroSection />
 

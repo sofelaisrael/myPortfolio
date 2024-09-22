@@ -25,31 +25,6 @@ const HeroSection = () => {
             var disp = new Date().toDateString()
             document.querySelector('.date').textContent = disp
         }, 100);
-
-        const nav = document.querySelector('.nav')
-        // const nav = document.querySelector('.nav')
-        window.onscroll = () => {
-            if (scrollY <= 50) {
-                if (window.innerWidth >= 1024) {
-                    nav.style.top = '40px'
-                } else if (window.innerWidth > 768 && window.innerWidth < 1024) {
-                    nav.style.top = '90px'
-                } else {
-                    nav.style.top = '80px'
-                }
-            } else {
-                if (window.innerWidth >= 1024) {
-                    nav.style.top = '40px'
-
-                } else if (window.innerWidth > 768 && window.innerWidth < 1024) {
-                    nav.style.top = '20px'
-                } else {
-                    nav.style.top = '10px'
-
-                }
-
-            }
-        }
     })
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger)
