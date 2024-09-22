@@ -56,13 +56,13 @@ const ContactSection = () => {
                         <div className="icon p-5 text-[20px]">
                             <AiOutlineUser />
                         </div>
-                        <input name="from_name" id="from_name" value={name} onChange={(e) => setName(e.target.value)} className="h-full w-full focus:outline-none bg-transparent" type="text" placeholder="Your name" />
+                        <input name="from_name" id="from_name" value={name} onChange={(e) => setName(e.target.value)} className="h-full w-[80%] px-2 focus:outline-none bg-transparent" type="text" placeholder="Your name" />
                     </div>
                     <div className="nameinp flex border bg-[#0a0a0aa0] h-[50px] w-[80%] max-md:w-[90%] mx-auto items-center rounded-full overflow-hidden border-[inherit]">
                         <div className="icon p-5 text-[20px]">
                             <GoMail />
                         </div>
-                        <input id="email_id" name="email_id" value={email} onChange={(e) => setEmail(e.target.value)} className="h-full w-full focus:outline-none bg-transparent" type="text" placeholder="Your email" />
+                        <input id="email_id" name="email_id" value={email} onChange={(e) => setEmail(e.target.value)} className="h-full px-2 w-[80%] focus:outline-none bg-transparent" type="text" placeholder="Your email" />
                     </div>
                     <div className="textarea w-full flex justify-center">
                         <textarea id="message" name="message" value={message} onChange={(e) => setMessage(e.target.value)} className="resize-none w-[80%] max-md:w-[90%] rounded-lg placeholder:p-0 h-[150px]   focus:outline-none p-4 mx-auto border-[#404040] bg-transparent border" placeholder="Your Message....." ></textarea>
