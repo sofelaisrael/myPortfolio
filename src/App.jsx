@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import Navbar from './components/Navbar'
 import Lenis from '@studio-freight/lenis'
 import gsap from 'gsap'
 import Home from './components/Home'
 import { ScrollTrigger } from 'gsap/all'
-import Testing from './routes/Testing'
 
 function App() {
-  const [load, setLoad] = useState(true)
+  const [load, setLoad] = useState(false)
 
   useEffect(() => {
     const lenis = new Lenis()
@@ -21,68 +19,37 @@ function App() {
 
     gsap.ticker.lagSmoothing(0)
 
-    window.onload = () => {
+
+  }, [])
+  window.onload = () => {
+      setLoad(true)
       setTimeout(() => {
         setLoad(false)
-      }, 3000);
+      }, 2000);
     }
-  }, [])
   useEffect(() => {
-    const circ = document.querySelector('.circ')
-    // const circ2 = document.querySelector('.circ2')
-    const mouse = { x: 0, y: 0 }
-    const prevMouse = { x: 0, y: 0 }
-    const circle = { x: 0, y: 0 }
-    let curscale = 0
-    let curangle = 0
-
-    window.onmousemove = (e) => {
-      mouse.x = e.x
-      mouse.y = e.y
-    }
-
-    const speed = 0.3
-
-    const tick = () => {
-      circle.x += (mouse.x - circle.x) * speed
-      circle.y += (mouse.y - circle.y) * speed
-
-      const translatetransform = `translate(${circle.x - 15}px, ${circle.y - 15}px)`
-      // circ2.style.transform = `translate(${circle.x}px, ${circle.y}px)`
-
-      const deltax = mouse.x - prevMouse.x
-      const deltay = mouse.y - prevMouse.y
-
-      prevMouse.x = mouse.x
-      prevMouse.y = mouse.y
-
-      const vel = Math.min(Math.sqrt(deltax ** 2 + deltay ** 2) * 4, 150)
-
-      const scale = (vel / 150) * 0.5
-
-      curscale += (scale - curscale) * speed
-
-      const scaleTransform = `scale(${1 + curscale}, ${1 - curscale})`
-
-      const angle = Math.atan2(deltay, deltax) * 180 / Math.PI
-      if (vel > 20) curangle = angle
-      const rotTransform = `rotate(${curangle}deg)`
-
-
-
-      circ.style.transform = `${translatetransform} ${rotTransform} ${scaleTransform}`
-
-      window.requestAnimationFrame(tick)
-    }
-    tick()
+    
+    gsap.to('.loa', {
+      left: '-100%',
+      duration: 1.6,
+      ease: 'expo.out',
+      delay: 3,
+    })
+    gsap.to('.loa2', {
+      right: '-100%',
+      duration: 1.6,
+      ease: 'expo.out',
+      delay: 3
+    })
   })
+
 
   return (
     <>
       {
         load && (
-          <div className="loader bg-[#0a0a0a] fixed w-full h-[100vh] z-[1000000]">
-            <svg xmlns="http://www.w3.org/2000/svg" className='scale-[1.3] absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] z-[100000000]' height="200" width="200">
+          <div className="loader bg-[#0a0a0a] fixed w-full h-[100vh] z-[1000000000]">
+            <svg xmlns="http://www.w3.org/2000/svg" className='scale-[1.3] absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] z-[100000]' height="200" width="200">
               <g style={{ order: -1 }}>
                 <polygon
                   transform="rotate(45 100 100)"
@@ -208,17 +175,10 @@ function App() {
             </svg>
           </div>
         )}
-      <div className='relative'>
-        <div className="circ z-[10000000000000] rounded-full"></div>
-        <div className="absolute w-[100vw] h-[100vh] bg-black top-[0%] loa z-[1000]"></div>
-        <div className="absolute w-[150vw] h-[100vh] bg-black top-[0%] loa2 z-[10000]"></div>
-        <Navbar />
-        {/* <Testing /> */}
+      <div className='relative w-full'>
+        <div className="fixed lo z-[100000000] w-[70vw] h-[100vh] top-0 skew-x-12 bg-[#0a0a0a] loa -left-20"></div>
+        <div className="fixed lo z-[10000000] w-[70vw] h-[100vh] top-0 skew-x-12 bg-[#0a0a0a] loa2 -right-20"></div>
         <Home />
-        {/* <div className="section h-[200vh] bg-white"></div> */}
-        {/* <div className="home bimg">
-          <img className='bimg' src={mount} alt="" />
-        </div> */}
       </div>
 
 

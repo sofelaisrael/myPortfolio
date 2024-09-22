@@ -1,94 +1,40 @@
-import { CgArrowLongRight } from "react-icons/cg";
+import React, { useEffect, useRef, useState } from 'react'
+import { HashLink } from 'react-router-hash-link'
+import emailjs from '@emailjs/browser';
+
+// icon imports
+import { HiPhone } from "react-icons/hi";
+import { VscLocation } from "react-icons/vsc";
+import { GoMail } from "react-icons/go";
 import { IoCopyOutline } from "react-icons/io5";
 import { TbBrandNextjs } from "react-icons/tb";
-import { IoLogoNodejs } from "react-icons/io";
+import { FaGithub } from "react-icons/fa";
+// import { RiTwitterXLine } from "react-icons/ri";
+import { IoLogoNodejs, IoIosAdd } from "react-icons/io";
 import { SiRedux, SiTailwindcss, SiExpress, SiMongodb, SiJquery, SiBootstrap, SiGreensock } from "react-icons/si";
 import { DiCss3, DiReact, DiJsBadge } from "react-icons/di";
-import { AiFillHtml5 } from "react-icons/ai";
 import { CiMail } from "react-icons/ci";
-import { FaGithubAlt } from "react-icons/fa";
-import { AiFillTwitterSquare } from "react-icons/ai";
-import { BsLinkedin, BsGit } from "react-icons/bs";
-import React, { useEffect, useRef, useState } from 'react'
+import { BiCopyright } from "react-icons/bi";
+import { AiFillTwitterSquare, AiFillHtml5, AiOutlineUser } from "react-icons/ai";
+import { BsLinkedin, BsGit, BsCheckLg } from "react-icons/bs";
+
+//  animation packages imports
 import SplitText from 'split-type'
 import gsap from 'gsap'
 import { ReactTyped } from 'react-typed'
 import { ScrollTrigger } from "gsap/all";
+
+// component & data imports
 import Tooltip from "./Tooltip";
-import mount from '../assets/proj.png'
+import Project from "./Project";
+import { projects } from "../lists/projects";
+
+// images import
+import logo from '../assets/logo.png'
+import sukuna from '../assets/sukuna.jfif'
+import { Link } from 'react-router-dom';
 
 const Home = () => {
-    // useEffect(() => {
-    //     let bg = document.querySelector('.para')
-    //     const mount = document.querySelector('.mount')
-    //     mount.onmousemove = (e) => {
-    //         const rect = bg.getBoundingClientRect()
-
-    //         const x = e.clientX - rect.left
-    //         const y = e.clientY - rect.top
-
-    //         const xp = x / rect.width * 100
-    //         const yp = y / rect.height * 100
-
-    //         mount.style.transformOrigin = `${xp}% ${yp}%`
-    //         mount.style.transform = 'scale(1.2)'
-    //     }
-    //     // let dark = document.querySelector('.dar')
-    //     window.addEventListener('scroll', function () {
-    //         let val = this.window.scrollY
-    //         bg.style.top = val * 0.25 + 'px'
-    //         // dark.style.top = val * 0.25 + 'px'
-    //     })
-    // })
-
-    // useEffect(() => {
-    //     let width = 145;
-    //     let height = 28;
-
-    //     let fireChars = " ,;+ltgti!lI?/\\|)(1}{][rcvzjftJUOQocxfXhqwWB8&%$#@"
-    //     let maxCharIndex = fireChars.length
-
-    //     let firePixelsArray = [];
-
-    //     for (let i = 0; i < width * height + 1; i++) {
-    //         firePixelsArray[i] = 0;
-    //     }
-
-    //     const generateFire = () => {
-    //         let fireString = "";
-
-    //         for (let i = 0; i < width; i++) {
-    //             let randomCol = Math.floor(Math.random() * width);
-    //             let index = randomCol + width * (height - 1);
-    //             firePixelsArray[index] = Math.floor(Math.random() * maxCharIndex);
-    //         }
-
-    //         for (let i = 0; i < width; i++) {
-    //             let randomCol = Math.floor(Math.random() * width);
-    //             let index = randomCol + width * (height - 1);
-    //             firePixelsArray[index] = 0;
-    //         }
-
-    //         for (let i = 0; i < width * (height - 1); i++) {
-    //             let averageValue =
-    //                 (firePixelsArray[i] +
-    //                     firePixelsArray[i + 1] +
-    //                     firePixelsArray[i + width] +
-    //                     firePixelsArray[i + width + 1]) /
-    //                 4;
-
-    //             firePixelsArray[i] = Math.floor(averageValue);
-
-    //             fireString += fireChars[firePixelsArray[i]];
-    //             if (i % width === 0) fireString += `\n`;
-    //         }
-
-    //         document.getElementById("fire").innerText = fireString;
-    //         setTimeout(generateFire, 30);
-    //     };
-
-    //     generateFire();
-    // }, [])
     useEffect(() => {
         const text = new SplitText('#name', { type: 'chars' })
         gsap.to(text.chars, {
@@ -169,6 +115,7 @@ const Home = () => {
             repeat: -1
         })
 
+
         // gsap.fromTo('.top', {
         //     scrollTrigger: {
         //         trigger: '.naag',
@@ -217,15 +164,15 @@ const Home = () => {
         // })
 
         const runAnim = () => {
-            const lines = document.querySelectorAll('#skills .line')
+            const lines = document.querySelectorAll('#skills > .line')
             lines.forEach(line => {
                 const target = line.querySelector('.line-mask')
 
                 gsap.to('#skills .line .line-mask', {
                     scrollTrigger: {
                         trigger: `#skills`,
-                        start: 'top center',
-                        end: '500px center',
+                        start: 'clamp(top center)',
+                        end: 'clamp(500px center)',
                         scrub: true,
                     },
                     width: '0%',
@@ -257,7 +204,7 @@ const Home = () => {
         const runSplit = () => {
             skills = new SplitText('#skills', { type: 'lines, words' })
 
-            const lines = document.querySelectorAll('.line')
+            const lines = document.querySelectorAll('#skills .line')
             lines.forEach(line => {
                 const newDiv = document.createElement('div')
                 newDiv.classList.add('line-mask')
@@ -320,41 +267,27 @@ const Home = () => {
             }
         })
     })
-    // useEffect(() => {
-    //     document.getElementById('card').onmousemove = (e) => {
-    //         for (const card of document.querySelectorAll('.card')) {
-    //             const rect = card.getBoundingClientRect(), x = e.clientX - rect.left, y = e.clientY - rect.top
-
-    //             card.style.setProperty('--mouse-x', `${x}px`)
-    //             card.style.setProperty('--mouse-y', `${y}px`)
-    //         }
-    //     }
-    // })
     useEffect(() => {
-        window.onmousemove = () => {
-            for (const card of document.querySelectorAll('.naag in')) {
-                card.style.setProperty('--cp', `0%`)
-            }
-        }
-
         document.querySelector('.naag').onmousemove = (e) => {
-            for (const card of document.querySelectorAll('.naag div')) {
-                const rect = card.getBoundingClientRect(), x = e.clientX - rect.left, y = e.clientY - rect.top
+            const clippath = document.querySelector('.naag .in')
+            const rect = clippath.getBoundingClientRect()
+            console.log(e.x, e.y);
 
-                setTimeout(() => {
-                    card.style.transition = 'none'
-                }, 400);
-                card.style.setProperty('--cp', `15%`)
-                card.style.setProperty('--cx', `${x}px`)
-                card.style.setProperty('--cy', `${y}px`)
-            }
+            gsap.to(clippath, .3, {
+                visibility: 'visible',
+                clipPath: `circle(15% at ${e.x - rect.left}px ${e.y - rect.top}px)`
+            })
         }
         document.querySelector('.naag').onmouseleave = (e) => {
-            for (const card of document.querySelectorAll('.naag div')) {
-                card.style.transition = 'all 100ms'
+            const clippath = document.querySelector('.naag .in')
+            const rect = clippath.getBoundingClientRect()
 
-                card.style.setProperty('--cp', `0%`)
-            }
+            gsap.to(clippath, .3, {
+                clipPath: `circle(0% at ${e.x - rect.left}px ${e.y - rect.top}px)`,
+            })
+            setTimeout(() => {
+                clippath.style.visibility = 'hidden'
+            }, 1000);
         }
 
     })
@@ -366,71 +299,221 @@ const Home = () => {
         }, 100);
 
     })
-    // useEffect(() => {
-    //     const img = document.querySelector('.bimg')
-    //     img.onmousemove = (e) => {
-    //         const rect = img.getBoundingClientRect()
-    //         const x = e.clientX - rect.left
-    //         const y = e.clientY - rect.top
+    useEffect(() => {
+        setInterval(() => {
+            var disp = new Date().toDateString()
+            document.querySelector('.date').textContent = disp
+        }, 100);
 
-    //         const xPer = x / rect.width * 100
-    //         const yPer = y / rect.height * 100
+        const nav = document.querySelector('.nav')
+        // const nav = document.querySelector('.nav')
+        window.onscroll = () => {
+            if (scrollY <= 50) {
+                if (window.innerWidth >= 1024) {
+                    nav.style.top = '40px'
+                } else if (window.innerWidth > 768 && window.innerWidth < 1024) {
+                    nav.style.top = '90px'
+                } else {
+                    nav.style.top = '80px'
+                }
+            } else {
+                if (window.innerWidth >= 1024) {
+                    nav.style.top = '40px'
 
-    //         img.style.transformOrigin = `${xPer}% ${yPer}%`
-    //         img.style.transform = 'scale(1.1)'
-    //     }
-    // })
-    // useEffect(() => {
+                } else if (window.innerWidth > 768 && window.innerWidth < 1024) {
+                    nav.style.top = '20px'
+                } else {
+                    nav.style.top = '10px'
 
-    //     let proxy = {
-    //         skew: 2
-    //     },
-    //         skewSetter = gsap.quickSetter(".skew", "skewY", "deg"), // fast
-    //         clamp = gsap.utils.clamp(-10, 10); // don't let the skew go beyond 20 degrees. 
+                }
 
-    //     ScrollTrigger.create({
-    //         onUpdate: (self) => {
-    //             let skew = clamp(self.getVelocity() / -1000);
-    //             if (Math.abs(skew) > Math.abs(proxy.skew)) {
-    //                 proxy.skew = skew;
-    //                 gsap.to(proxy, {
-    //                     skew: 0,
-    //                     duration: 1,
-    //                     ease: "power3",
-    //                     overwrite: true,
-    //                     onUpdate: () => skewSetter(proxy.skew)
-    //                 });
-    //             }
-    //         }
-    //     });
+            }
+        }
+    })
+    useEffect(() => {
+        const circ = document.querySelector('.circ')
+        const hand = document.querySelector('.hand')
+        const photo = document.querySelector('.photo')
 
-    //     // make the right edge "stick" to the scroll bar. force3D: true improves performance
-    //     // gsap.set(".skew", {
-    //     //     transformOrigin: "right center",
-    //     //     force3D: true
-    //     // });
+        hand.style.opacity = 0
+        // const circ2 = document.querySelector('.circ2')
+        const mouse = { x: 0, y: 0 }
+        const prevMouse = { x: 0, y: 0 }
+        const circle = { x: 0, y: 0 }
+        let curscale = 0
+        let curangle = 0
+
+        window.onmousemove = (e) => {
+            mouse.x = e.x
+            mouse.y = e.y
+            const home = document.querySelector('.nav')
+            const slide = home.getBoundingClientRect()
+            for (const link of document.querySelectorAll('.links')) {
+                link.onmouseenter = () => {
+                    const rect = link.getBoundingClientRect()
+                    const slider = document.querySelector('.slider')
+                    slider.style.opacity = 1
+                    gsap.to('.slider', 0.3, { left: `${rect.left - slide.left - 100}px`, width: `${rect.width}`, ease: 'expo.out' })
+                }
+            }
+
+            photo.onmousemove = () => {
+                hand.style.opacity = 1
+                gsap.to(hand, 1.5, { x: mouse.x, y: mouse.y })
+            }
+        }
+        for (const link of document.querySelectorAll('.links')) {
+            link.onmouseleave = () => {
+                gsap.to('.slider', 0, { opacity: 0 })
+            }
+        }
 
 
-    // })
+        photo.onmouseleave = () => {
+            hand.style.opacity = 0
+        }
+
+        const speed = 0.3
+
+        const tick = () => {
+            circle.x += (mouse.x - circle.x) * speed
+            circle.y += (mouse.y - circle.y) * speed
+
+            const translatetransform = `translate(${circle.x - 15}px, ${circle.y - 15}px)`
+            // circ2.style.transform = `translate(${circle.x}px, ${circle.y}px)`
+
+            const deltax = mouse.x - prevMouse.x
+            const deltay = mouse.y - prevMouse.y
+
+            prevMouse.x = mouse.x
+            prevMouse.y = mouse.y
+
+            const vel = Math.min(Math.sqrt(deltax ** 2 + deltay ** 2) * 4, 150)
+
+            const scale = (vel / 150) * 0.5
+
+            curscale += (scale - curscale) * speed
+
+            const scaleTransform = `scale(${1 + curscale}, ${1 - curscale})`
+
+            const angle = Math.atan2(deltay, deltax) * 180 / Math.PI
+            if (vel > 20) curangle = angle
+            const rotTransform = `rotate(${curangle}deg)`
+
+
+
+            circ.style.transform = `${translatetransform} ${rotTransform} ${scaleTransform}`
+
+            window.requestAnimationFrame(tick)
+        }
+        tick()
+    })
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [message, setMessage] = useState('')
+    const [more, setMore] = useState(true)
+    const [sent, setSent] = useState(false)
+    const form = useRef()
+
+    const validate = (email) => {
+        const regex = /^[^@]+@[^@]+\.[^@]{2,4}$/
+        return regex.test(email)
+    }
+    const shoot = (e) => {
+        e.preventDefault()
+        setSent(true)
+        setTimeout(() => {
+            setSent(false)
+        }, 3000);
+        emailjs.sendForm('service_9012igt', 'template_lqpiefk', '#form', {
+            publicKey: '8ipRC7AQhlFJ8sBRb',
+        })
+    }
+    const copy = () => {
+        navigator.clipboard.writeText('sofelaisrael@gmail.com')
+        const copytextspan = document.querySelector('.copy span')
+        copytextspan.textContent = 'copied'
+        setTimeout(() => {
+            copytextspan.textContent = 'copy my email address'
+        }, 2000);
+    }
 
     return (
         <div className='relative text-white overflow-hidden top-0 bg-transparent'>
 
-            <section className="hero-section top-0 h-[100vh] relative px-20 max-md:p-5 lg:pr-0 flex max-lg:flex-col py-40 bg-[#0a0a0a] overflow-hidden max-lg:justify-center">
+            <div className="circ z-[10000000000000] rounded-full"></div>
+
+            <div className='text-white h-[120px] overflow-hidden p-5 bg-transparent z-[100000]  absolute flex justify-between w-full items-center'>
+                <div className="nav-brand flex relative bg-transparent">
+                    <img src={logo} className='max-md:h-[50px]' alt="" />
+                </div>
+                <div className="fixed md:w-[500px] max-lg:w-[90%] transition-all duration-200 h-[50px] top-10 max-md:top-20 left-1/2 border-[#505050] border max-md:text-[12px] -translate-x-1/2 rounded-full backdrop-blur-[2px] flex justify-evenly items-center nav uppercase gap-5">
+                    <span className='links z-20 text-white h-[50px] flex items-center md:hover:text-black w-[100px] justify-center'>
+                        <HashLink scroll={el => {
+                            const yOffset = -100; // Adjust this based on your header height
+                            const y = el.getBoundingClientRect().top + window.scrollY + yOffset;
+                            window.scrollTo({ top: y, behavior: 'smooth' });
+                        }} smooth to="/#home">
+                            Home
+                        </HashLink>
+                    </span>
+                    <span className='links z-20 text-white h-[50px] flex items-center md:hover:text-black w-[100px] justify-center'>
+
+                        <HashLink scroll={el => {
+                            const yOffset = -100; // Adjust this based on your header height
+                            const y = el.getBoundingClientRect().top + window.scrollY + yOffset;
+                            window.scrollTo({ top: y, behavior: 'smooth' });
+                        }} smooth to="/#about">
+                            About
+                        </HashLink>
+                    </span>
+                    <span className='links z-20 text-white h-[50px] flex items-center md:hover:text-black w-[100px] justify-center'>
+                        <HashLink scroll={el => {
+                            const yOffset = -50; // Adjust this based on your header height
+                            const y = el.getBoundingClientRect().top + window.scrollY + yOffset;
+                            window.scrollTo({ top: y, behavior: 'smooth' });
+                        }} smooth to="/#projects">
+                            Projects
+                        </HashLink>
+                    </span>
+                    <span className='links z-20 text-white h-[50px] flex items-center md:hover:text-black w-[100px] justify-center'>
+                        <HashLink scroll={el => {
+                            const yOffset = -80; // Adjust this based on your header height
+                            const y = el.getBoundingClientRect().top + window.scrollY + yOffset;
+                            window.scrollTo({ top: y, behavior: 'smooth' });
+                        }} smooth to="/#contact">
+                            Contact
+                        </HashLink>
+                    </span>
+
+                    <div className="slider max-md:hidden bg-white z-10 w-10 border rounded-[10px] fixed pointer-events-none translate-x-[100%] -translate-y-1/2  h-[30px] top-1/2 py-5 opacity-0"></div>
+                </div>
+                <div className="date pt-10 max-md:p-2 p-10"></div>
+            </div>
+
+            <section id="home" className="hero-section top-0 md:h-[100vh] relative px-20 max-md:p-5 lg:pr-0 flex max-lg:flex-col py-40 bg-[#0a0a0a] overflow-hidden max-lg:justify-center max-md:py-40 max-lg:gap-5 max-lg:items-center z-[10000]">
 
                 <div className="radgrad absolute top-1/2 -translate-y-1/2 w-[100vw] h-[100vw] max-md:w-[100vh] max-md:h-[100vh] left-0 bg-opacity-5" ></div>
-                <div className="absolute h-[100vh] w-[100vw] z-[1] bgdrop top-0"></div>
 
-                <div className="absolute h[100vh] w-[100vw] z-[1] bgdrop2 top-0"></div>
+                <div className="absolute h-[100vh] max-md:h-[100%] w-[100vw] z-[1] bgdrop top-0"></div>
+
+                <div className="absolute max-md:h-[100%] w-[100vw] z-[1] bgdrop2 top-0"></div>
 
                 <div className="tad absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[50px] flex flex-col justify-center gap-1 z-[100] max-lg:hidden" >
-                    <span className="leading-[50px] hour"></span>
-                    <span className="leading-[50px] mins"></span>
+                    <span className="leading-[50px] text-center hour"></span>
+                    <span className="leading-[50px] mins text-center"></span>
                 </div>
 
                 <div className="left w-1/3 z-2 max-lg:w-full relative z-[1000] max-lg:text-center self-center">
-                    <div className="w-16 h-16 bg-white rounded-full my-5 max-lg:mx-auto"></div>
-                    <div className="join flex max-lg:w-fit max-lg:mx-auto max-md:flex-col relative md:items-end gap-7 text-[50px] font-bold max-md:text-[30px]">
+                    <div className="tell hand backdrop-blur-[5px] border border-[#2d2d2d]">
+                        <span>This developer has no pictures</span>
+                    </div>
+                    <div className="w-36 max-md:w-28 max-md:h-28 photo h-36 z-[10000000] rounded-full my-5 max-lg:mx-auto overflow-hidden">
+                        <img src={sukuna} className="h-[100%] object-cover" alt="" />
+                    </div>
+
+
+                    <div className="flex max-lg:w-fit max-lg:mx-auto relative md:items-end gap-7 text-[50px] font-bold max-md:text-[30px] join max-md:py-2">
 
                         Hello! I'm Sofela Israel
                     </div>
@@ -443,12 +526,23 @@ const Home = () => {
                     ]} loop backSpeed={30} typeSpeed={50} />
                 </div>
 
-                <div className="check max-md:pb-10 flex gap-5 mt-3 lg:absolute top-[70%] max-lg:justify-center left-1/2 z-[1000] lg:-translate-x-1/2">
-                    <div className="github flex justify-center icons rounded-full magic-hover magic-hover_square text-xl items-center border border-[#fff3] w-12 h-12  hover:bg-black" style={{ transform: 'translate3d(0px, 0px, 0px)' }} ><FaGithubAlt /></div>
-                    <div className="facebook  flex justify-center icons rounded-full magic-hover magic-hover__square text-xl items-center border border-[#fff3] w-12 h-12  hover:bg-[#1da1f2]" style={{ transform: 'translate3d(0px, 0px, 0px)' }} ><AiFillTwitterSquare /></div>
-                    {/* <div className="Phone flex justify-center icons rounded-full magic-hover magic-hover__square text-xl items-center border border-[#fff3] w-12 h-12  hover:bg-[#a4c639]" style={{ transform: 'translate3d(0px, 0px, 0px)' }} ><MdLocalPhone /><span className="spac text-lg">Number</span></div> */}
-                    <div className="email flex justify-center icons rounded-full magic-hover magic-hover__square text-xl items-center border border-[#fff3] w-12 h-12  hover:bg-[#c71610]" style={{ transform: 'translate3d(0px, 0px, 0px)' }} ><CiMail /></div>
-                    <div className="LinkedIn flex justify-center icons rounded-full magic-hover magic-hover__square text-xl items-center border border-[#fff3] w-12 h-12  hover:bg-[#0e76a8]" style={{ transform: 'translate3d(0px, 0px, 0px)' }} ><BsLinkedin /></div>
+                <div className="check max-md:pb-10 flex gap-5 mt-3 lg:absolute top-[70%] max-lg:justify-center left-1/2 z-[1000] lg:-translate-x-1/2 max-md:pt-5">
+                    <Link to={'https://github.com/sofelaisrael'} target='_blank'>
+                        <Tooltip name={'Github'} bg='black' border={true}>
+                            <FaGithub />
+                        </Tooltip>
+                    </Link>
+
+                    <Link to={'https://x.com/Sofelaa1?s=09'} target='_blank'>
+                        <Tooltip name={'Twitter'} bg='[#1da1f2]' border={true}>
+                            <AiFillTwitterSquare />
+                        </Tooltip>
+                    </Link>
+                    <Link to={'https://www.linkedin.com/in/sofela-israel-570851263?utm_source&utm_source=share&utm_content=profile7utm_medium=android_app'} target='_blank'>
+                        <Tooltip name={'LinkedIn'} bg='[#0e76a8]' border={true}>
+                            <BsLinkedin />
+                        </Tooltip>
+                    </Link>
                 </div>
 
                 <div className="right max-lg:text-center max-lg:w-full max-md:gap-5 w-2/3 flex flex-col items-end z-[200] relative self-center p-5">
@@ -470,13 +564,13 @@ const Home = () => {
                 {/* <div className="absolute marq -top-28 max-md:hidden -left-[130%] z-[3] blur-sm opacity-0">ABOUT ME</div> */}
 
                 <div className="heading text-[50px] max-md:text-[28px]">
-                    <span className="px-5">/ /</span>
+                    <span className="pl-5">//</span>
                     About Me
                     <span id='hash' className="text-[#ff00ff] hash relative">#</span>
                 </div>
 
                 <div className="flex max-lg:flex-col">
-                    <div id="skills" className="skills pt-32 rounded-[30px] text-[60px] lg:w-[60%] md:px-10 px-5 pb-10 font-extrabold leading-[60px] border-[#2e2e2e] backdrop-blur-sm max-md:leading-[40px] max-md:text-[40px]">
+                    <div id="skills" className="skills pt-32 rounded-[30px] text-[60px] lg:w-[60%] max-lg:w-[90%] md:px-10 px-5 pb-10 font-extrabold leading-[65px] backdrop-blur-sm max-md:leading-[40px] border-0 max-md:text-[40px]">
                         Passionate and Creative Full Stack Developer
                         having Proficiency in MERN Stack. Attired with a variety of tools and technologies  and keen to learn a new one.
                     </div>
@@ -540,9 +634,11 @@ const Home = () => {
                             <div className="ques text-[32px] max-md:text-[24px] grad">
                                 Do you want to build a project together...?
                             </div>
-                            <div className="copy text-[16px] p-3 flex gap-3 justify-center items-center border w-fit mx-auto rounded-full mt-10">
-                                <IoCopyOutline />copy my email address
+                            <div className="copy text-[16px] p-3 flex gap-3 justify-center items-center border w-fit mx-auto rounded-full mt-10" onClick={copy}>
+                                <IoCopyOutline />
+                                <span>copy my email address</span>
                             </div>
+
                         </div>
 
                         <div className="last border text-[30px] max-md:text-[24px] rounded-[30px] flex flex-col flex-grow w-full justify-center p-5 border-[#2e2e2e] relative overflow-hidden">
@@ -555,6 +651,7 @@ const Home = () => {
                 </div>
 
             </section>
+
             <div className="naag flex flex-col justify-center items-center h-[300px] relative text-[100px] font-[900] -gap-10 max-lg:hidden">
                 <div className="absolute top-1/2 w-full in flex justify-center left-1/2 items-center h-[300px]">
                     <span className="w-[800px] leading-[100px] text-center">
@@ -566,188 +663,82 @@ const Home = () => {
 
             <section className="projects p-10 overflow-x-hidden" id="projects">
                 <div className="heading text-[50px] max-md:text-[28px] pb-10">
-                    <span className="px-2">/ /</span>
+                    <span className="md:px-2">//</span>
                     My Projects
                     <span id='hash' className="text-[#ff00ff] hash relative">#</span>
                 </div>
                 <div id="card">
-                    <div className="card max-md:w-full max-md:h-[300px]">
-                        <div className="projectimg h-[100%] rounded-[inherit] w-[100%] overflow-hidden" id="noise">
-                            <img src={mount} className="object-cover max-xl:h-full max-md:w-full rounded-[inherit]" alt="" />
-                            <svg style={{ display: 'none' }}>
-                                <defs>
-                                    <filter id="noise">
-                                        <feTurbulence
-                                            baseFrequency="0.7,0.8"
-                                            seed="0"
-                                            type="fractalNoise"
-                                            result="static"
-                                        >
-                                            <animate
-                                                attributeName="seed"
-                                                values="1000"
-                                                dur="800ms"
-                                                repeatCount="1"
-                                                begin="noise.mouseenter"
-                                            />
-                                        </feTurbulence>
-                                        <feDisplacementMap in="SourceGraphic" in2="static">
-                                            <animate
-                                                attributeName="scale"
-                                                values="200;0"
-                                                dur="800ms"
-                                                repeatCount="1"
-                                                begin="noise.mouseenter"
-                                            />
-                                        </feDisplacementMap>
-                                    </filter>
-                                </defs>
-                            </svg>
-                        </div>
-                        <div className="card-content flex flex-col relative gap-2 p-5">
+                    {(more ? projects.slice(0, 3) : projects).map(proj => (
+                        <Project link={proj.projectlink} lang={proj.projectlanguages} name={proj.projectname} img={proj.projectimage} content={proj.projectcontent} />
+                    ))}
 
-                            <div className="flex justify-between items-center">
 
-                                <div className="projectname text-[32px] max-md:text-[16px]">Real Rent</div>
-                                <div className="border flex justify-center items-center icons p-1 max-md:text-[16px] text-[24px] rounded-full">
-                                    <DiReact />
-                                </div>
-                            </div>
-                            <div className="projectcontent text-[#a0a0a070] max-md:text-[12px]">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit
-                            </div>
-                            <div className="btns ">
-                                <div className="visit flex gap-2 relative z-[100000] items-center border  rounded-lg p-2 w-24 justify-evenly border-[#a0a0a050] bg-[#000]">Visit <CgArrowLongRight /></div>
-                            </div>
-                            <div className="projectlang flex">
-
-                            </div>
-                        </div>
-                    </div>
-                    <div className="card skew">
-                        <div className="projectimg h-[100%] rounded-[inherit] w-[100%] overflow-hidden" id="noise">
-                            <img src={mount} className="object-cover w-full rounded-[inherit]" alt="" />
-                            <svg style={{ display: 'none' }}>
-                                <defs>
-                                    <filter id="noise">
-                                        <feTurbulence
-                                            baseFrequency="0.7,0.8"
-                                            seed="0"
-                                            type="fractalNoise"
-                                            result="static"
-                                        >
-                                            <animate
-                                                attributeName="seed"
-                                                values="1000"
-                                                dur="800ms"
-                                                repeatCount="1"
-                                                begin="noise.mouseenter"
-                                            />
-                                        </feTurbulence>
-                                        <feDisplacementMap in="SourceGraphic" in2="static">
-                                            <animate
-                                                attributeName="scale"
-                                                values="200;0"
-                                                dur="800ms"
-                                                repeatCount="1"
-                                                begin="noise.mouseenter"
-                                            />
-                                        </feDisplacementMap>
-                                    </filter>
-                                </defs>
-                            </svg>
-                        </div>
-                        <div className="card-content flex flex-col relative gap-2 p-5">
-
-                            <div className="projectname text-[32px]">Real Rent</div>
-                            <div className="projectcontent text-[#a0a0a070]">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit
-                            </div>
-                            <div className="btns ">
-                                <div className="visit flex gap-2 relative z-[100000] items-center border  rounded-lg p-2 w-24 justify-evenly border-[#a0a0a050] bg-[#000]">Visit <CgArrowLongRight /></div>
-                            </div>
-                            <div className="projectlang flex">
-                                <div className="border flex justify-center items-center icons w-8 h-8 text-[24px] rounded-full">
-                                    <DiReact />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="card skew">
-                        <div className="projectimg h-[100%] rounded-[inherit] w-[100%] overflow-hidden" id="noise">
-                            <img src={mount} className="object-cover w-full rounded-[inherit]" alt="" />
-                            <svg style={{ display: 'none' }}>
-                                <defs>
-                                    <filter id="noise">
-                                        <feTurbulence
-                                            baseFrequency="0.7,0.8"
-                                            seed="0"
-                                            type="fractalNoise"
-                                            result="static"
-                                        >
-                                            <animate
-                                                attributeName="seed"
-                                                values="1000"
-                                                dur="800ms"
-                                                repeatCount="1"
-                                                begin="noise.mouseenter"
-                                            />
-                                        </feTurbulence>
-                                        <feDisplacementMap in="SourceGraphic" in2="static">
-                                            <animate
-                                                attributeName="scale"
-                                                values="200;0"
-                                                dur="800ms"
-                                                repeatCount="1"
-                                                begin="noise.mouseenter"
-                                            />
-                                        </feDisplacementMap>
-                                    </filter>
-                                </defs>
-                            </svg>
-                        </div>
-                        <div className="card-content flex flex-col relative gap-2 p-5">
-
-                            <div className="projectname text-[32px]">Real Rent</div>
-                            <div className="projectcontent text-[#a0a0a070]">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit
-                            </div>
-                            <div className="btns ">
-                                <div className="visit flex gap-2 relative z-[100000] items-center border  rounded-lg p-2 w-24 justify-evenly border-[#a0a0a050] bg-[#000]">Visit <CgArrowLongRight /></div>
-                            </div>
-                            <div className="projectlang flex">
-                                <div className="border flex justify-center items-center icons w-8 h-8 text-[24px] rounded-full">
-                                    <DiReact />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="more w-[200px] h-[50px] mx-auto font-bold my-10 flex justify-center items-center bg-white text-black rounded-lg z-[10]">
-                        Show More
+                    <div className="more w-[200px] h-[50px] mx-auto font-bold my-10 flex justify-center items-center bg-white text-black rounded-lg hover:bg-[#0a0a0a] border-[#252525] hover:text-white hover:border transition-all duration-200 " onClick={() => setMore(!more)}>
+                        {more ? 'Show More' : 'Show Less'}
                     </div>
                 </div>
             </section>
 
-            <section id="contact" className="contact-me overflow-hidden h-[100vh] flex flex-col p-10">
-                <div className="heading text-[50px] max-md:text-[28px] pb-10 z-[100000]">
-                    <span className="px-2">/ /</span>
+            <section id="contact" className="contact-me overflow-hidden flex flex-col">
+                <div className="heading text-[50px] max-md:text-[28px] pb-10 z-[0] bg-[#0a0a0a] px-10">
+                    <span className="md:px-2">//</span>
                     Contact Me
                     <span id='hash' className="text-[#ff00ff] hash relative">#</span>
 
                 </div>
-                {/* <div className="flex">
-                    <div className="send w-[65%] rounded-lg backdrop-blur-md flex border h-[500px]">
-                        <form action="">
 
-                        </form>
+                <div className="contact relative flex flex-col max-lg:items-center">
+                    <div className="touch md:h-[300px] w-full p-10 max-md:p-5 text-[50px] max-md:text-[32px] bg-[#0a0a0a]">
+                        Get in Touch...&nbsp;;)
+                        <div className="end md:w-[500px] max-xl:w-[300px] max-lg:w-[75%] max-md:w-full max-md:text-[14px] text-[20px]">
+                            I'd love to hear from you, so if you have any questions, or you want to connect, or you have a project in mind.<br /> Let's make something awesome together
+                        </div>
                     </div>
-                </div> */}
-                {/* <HomeSide /> */}
 
-            </section>
+                    <div className="findme md:h-[300px] p-10 max-md:p-5 flex flex-col gap-10 w-full overflow-hidden">
+                        <div className="flex gap-5 items-center email"><GoMail />sofelaisrael00@gmail.com</div>
+                        <div className="flex gap-5 items-center address"><VscLocation />Akinyele Close, Ipaja, Lagos state.</div>
+                        <div className="flex gap-5 items-center phone"><HiPhone />(+234) 70 8165 9372</div>
+                    </div>
 
-        </div>
+                    <form id="form" className="lg:absolute form overflow-hidden border-[#404040] form w-[500px] top-0 rounded-xl gap-5 right-20  max-lg:mb-5 flex flex-col -translate-x-1/ max-lg:w-[90%] max-md:mx-auto border py-10 backdrop-blur-md" ref={form} onSubmit={shoot}>
+                        <div className="head text-[50px] pb-5 px-10">Message</div>
+                        <div className="nameinp flex border bg-[#0a0a0aa0] h-[50px] w-[80%] mx-auto items-center rounded-full overflow-hidden border-[inherit]">
+                            <div className="icon p-5 text-[28px]">
+                                <AiOutlineUser />
+                            </div>
+                            <input name="from_name" id="from_name" value={name} onChange={(e) => setName(e.target.value)} className="h-full w-full focus:outline-none bg-transparent" type="text" placeholder="Your name" />
+                        </div>
+                        <div className="nameinp flex border bg-[#0a0a0aa0] h-[50px] w-[80%] mx-auto items-center rounded-full overflow-hidden border-[inherit]">
+                            <div className="icon p-5 text-[28px]">
+                                <GoMail />
+                            </div>
+                            <input id="email_id" name="email_id" value={email} onChange={(e) => setEmail(e.target.value)} className="h-full w-full focus:outline-none bg-transparent" type="text" placeholder="Your email" />
+                        </div>
+                        <div className="textarea w-full flex justify-center">
+                            <textarea id="message" name="message" value={message} onChange={(e) => setMessage(e.target.value)} className="resize-none w-[80%] rounded-lg placeholder:p-0 h-[150px]   focus:outline-none p-4 mx-auto border-[#404040] bg-transparent border" placeholder="Your Message....." ></textarea>
+                        </div>
+                        {sent ? (
+                            <div className="sent text-center flex justify-center gap-5 items-center"><BsCheckLg />Sent Successfully!</div>
+                        ) : (
+                            <button type="submit" disabled={!(validate(email) && name.trim() != '' && message.trim() != '')} className={`w-[80%] mx-auto rounded-full h-[50px] disabled:opacity-30 bg-white text-black`}>Shoot</button>
+                        )}
+
+
+
+                    </form>
+                </div>
+            </section >
+
+            <footer className="h-[100px] bg-black flex justify-center items-center gap-5">
+                <div className="first">Made by Sofela Israel</div>
+                <div className="copy flex items-center">
+                    <BiCopyright />2024
+                </div>
+
+            </footer>
+
+        </div >
     )
 }
 
