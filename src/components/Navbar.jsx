@@ -1,9 +1,37 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { HashLink } from 'react-router-hash-link'
 import logo from '../assets/logo.png'
 
 
 const Navbar = () => {
+    useEffect(() => {
+
+
+        const nav = document.querySelector('.nav')
+        // const nav = document.querySelector('.nav')
+        window.onscroll = () => {
+            if (scrollY <= 50) {
+                if (window.innerWidth >= 1024) {
+                    nav.style.top = '40px'
+                } else if (window.innerWidth > 768 && window.innerWidth < 1024) {
+                    nav.style.top = '90px'
+                } else {
+                    nav.style.top = '80px'
+                }
+            } else {
+                if (window.innerWidth >= 1024) {
+                    nav.style.top = '40px'
+
+                } else if (window.innerWidth > 768 && window.innerWidth < 1024) {
+                    nav.style.top = '20px'
+                } else {
+                    nav.style.top = '10px'
+
+                }
+
+            }
+        }
+    })
     return (
         <div className='text-white h-[120px] overflow-hidden p-5 bg-transparent z-[100000]  absolute flex justify-between w-full items-center'>
             <div className="nav-brand flex relative bg-transparent">
