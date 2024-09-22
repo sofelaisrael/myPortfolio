@@ -171,9 +171,10 @@ const Home = () => {
                 gsap.to('#skills .line .line-mask', {
                     scrollTrigger: {
                         trigger: `#skills`,
-                        start: 'clamp(top center)',
-                        end: 'clamp(500px center)',
+                        start: 'clamp(top 20%)',
+                        end: 'clamp(600px center)',
                         scrub: true,
+                        markers: true
                     },
                     width: '0%',
                     duration: 4,
@@ -246,25 +247,6 @@ const Home = () => {
         line.forEach(li => {
             li.style.display = 'inline-block'
             li.style.textAlign = 'left'
-        })
-    })
-    useEffect(() => {
-        // const cursor = document.querySelector('#magicMouseCursor')
-        // cursor.style.visibility = 'hidden'
-
-
-        // window.onmousemove = () => {
-        //     cursor.style.visibility = 'visible'
-        // }
-
-        const icon = document.querySelectorAll('.icons')
-        icon.forEach(ic => {
-            ic.onmouseover = () => {
-                ic.classList.add('active')
-            }
-            ic.onmouseout = () => {
-                ic.classList.remove('active')
-            }
         })
     })
     useEffect(() => {

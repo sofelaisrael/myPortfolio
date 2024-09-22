@@ -2,6 +2,7 @@ import img1 from '../assets/softnotez.png'
 import img2 from '../assets/squirrel.png'
 import img3 from '../assets/realrent.png'
 import img4 from '../assets/myportfolio.png'
+import img5 from '../assets/josh-flix.png'
 
 export const projects = [
     {
@@ -38,18 +39,10 @@ export const projects = [
     },
     {
         id: 5,
-        projectname: 'Squirrel',
+        projectname: 'JoshFlix',
         projectcontent: 'Get Aligned Around Your Goals From roadmaps to workflows, power team collaboration and move work forward with the #1 project management tool used by agile teams.',
-        projectimage: img2,
+        projectimage: img5,
         projectlanguages: 'React',
-        projectlink: 'https://sofelaisrael.github.io/Squirrel'
-    },
-    {
-        id: 6,
-        projectname: 'Real Rent',
-        projectcontent: 'Rent your dream house now',
-        projectimage: img3,
-        projectlanguages: 'React',
-        projectlink: 'https://real-rent.vercel.app'
-    },
+        projectlink: 'https://movieapp-josh-devv.vercel.app'
+    }
 ]
