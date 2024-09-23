@@ -154,7 +154,7 @@ const AboutSection = () => {
                     </div>
 
                     <div className="lastdiv border text-[30px] max-md:text-[24px] rounded-[30px] flex flex-col flex-grow w-full justify-center p-5 border-[#2e2e2e] relative overflow-hidden">
-                        <div className="d last font-bold text-center px-5 z-20">Tech Enthusiast with a passion for Development</div>
+                        <div className="d last font-bold max-md:text-[16px] text-center px-5 z-20">Tech Enthusiast with a passion for Development</div>
                         <div className="spinner absolute left-[90%]">
                             <div className="spinner1"></div>
                         </div>
