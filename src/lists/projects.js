@@ -18,7 +18,7 @@ export const projects = [
         projectname: 'Squirrel',
         projectcontent: 'Get Aligned Around Your Goals From roadmaps to workflows, power team collaboration and move work forward with the #1 project management tool used by agile teams.',
         projectimage: img2,
-        projectlanguages: 'React',
+        projectlanguages: 'React, Bootstrap',
         projectlink: 'https://sofelaisrael.github.io/Squirrel'
     },
     {

@@ -8,45 +8,104 @@ import { BsGit } from 'react-icons/bs'
 import { IoCopyOutline, IoLogoNodejs } from 'react-icons/io5'
 import SplitText from 'split-type'
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/all'
+import '../App.css'
 
 
 const AboutSection = () => {
     useEffect(() => {
-        const runAnim = () => {
-            const lines = document.querySelectorAll('#skills > .line')
-            lines.forEach(line => {
-                gsap.to(`#skills .line .line-mask`, {
-                    scrollTrigger: {
-                        trigger: `#skills`,
-                        start: 'clamp(top 20%)',
-                        end: 'clamp(600px center)',
-                        scrub: true,
-                    },
-                    width: '0%',
-                    duration: 4,
-                    stagger: 1
-                })
-            })
-        }
-        let skills;
-        const runSplit = () => {
-            skills = new SplitText('#skills', { type: 'lines, words' })
+        const skills = new SplitText('#skills')
+        // const stack = new SplitText('.stack div')
+        gsap.registerPlugin(ScrollTrigger)
 
-            const lines = document.querySelectorAll('#skills .line')
-            lines.forEach(line => {
-                const newDiv = document.createElement('div')
-                newDiv.classList.add('line-mask')
-                line.append(newDiv)
+        skills.lines.forEach(word => {
+
+            gsap.from(word, {
+                scrollTrigger: {
+                    trigger: word,
+                    start: 'top 70%',
+                    end: 'bottom 50%',
+                    scrub: true
+                },
+                backgroundPositionX: '100%',
+                duration: 0.7,
             })
-            runAnim()
-        }
-        runSplit()
-        window.addEventListener('resize', () => {
-            skills.revert()
-            runSplit()
+
+        })
+        const stack = new SplitText('.stack')
+        const last = new SplitText('.last')
+        // gsap.registerPlugin(ScrollTrigger)
+
+
+        gsap.from(stack.words, {
+          scrollTrigger: {
+            trigger: '.stackdiv',
+            start: 'center 90%',
+            end: 'center 25%',
+            toggleActions: 'play reverse restart reverse'
+          },
+          opacity: 0,
+          yPercent: 100,
+          duration: 0.1,
+          ease: 'back.out',
+          stagger: { amount: 0.5 }
         })
 
+
+        gsap.from(last.words, {
+          scrollTrigger: {
+            trigger: '.lastdiv',
+            start: 'center 90%',
+            end: 'center 25%',
+            toggleActions: 'play reverse restart reverse'
+          },
+          opacity: 0,
+          yPercent: 100,
+          duration: 0.1,
+          ease: 'back.out',
+          stagger: { amount: 0.5 }
+        })
+
+
+        // ScrollTrigger.create({
+        //     trigger: self,
+        //     start: 'top 60%',
+        //     markers: true,
+        //     onEnter: () => tl.play(),
+        //     onLeaveBack: () => tl.reverse()
+        // })
+
+        // stack.lines.forEach(st => {
+
+        //     gsap.from(st, {
+        //         scrollTrigger: {
+        //             trigger: st,
+        //             start: 'top 70%',
+        //             end: 'bottom 50%',
+        //             // markers: true,
+        //             scrub: true
+        //         },
+
+        //         duration: 0.7,
+        //     })
+
+        // })
+
+        // gsap.to('.tol', {
+        //     scrollTrigger: {
+        //         trigger: '.bt',
+        //         start: 'center 70%',
+        //         end: 'end 40%',
+        //         markers: true,
+        //         toggleActions: 'play complete reverse complete'
+        //         // scrub: true
+        //     },
+        //     top: 0,
+        //     opacity: 1,
+        //     duration: 0.5,
+        // })
     })
+
     const copy = () => {
         navigator.clipboard.writeText('sofelaisrael@gmail.com')
         const copytextspan = document.querySelector('.copy span')
@@ -57,24 +116,23 @@ const AboutSection = () => {
     }
     return (
         <section className="about-me relative px-10 max-md:px-2 bg-[#0a0a0a]" id="about">
-            {/* <div className="absolute marq -top-28 max-md:hidden -left-[130%] z-[3] blur-sm opacity-0">ABOUT ME</div> */}
-
             <div className="heading text-[50px] max-md:text-[28px]">
                 <span className="pl-5">//</span>
                 About Me
                 <span id='hash' className="text-[#ff00ff] hash relative">#</span>
             </div>
+            <div className="deafult"></div>
 
-            <div className="flex max-lg:flex-col">
+            <div className="flex tup max-lg:flex-col">
                 <div id="skills" className="skills pt-16 md:pt-32 rounded-[30px] text-[60px] lg:w-[60%] max-lg:w-[90%] md:px-10 px-5 pb-10 font-extrabold leading-[65px] backdrop-blur-sm max-md:leading-[40px] border-0 max-md:text-[40px]">
                     Passionate and Creative Full Stack Developer
                     having Proficiency in MERN Stack. Attired with a variety of tools and technologies  and keen to learn a new one.
                 </div>
 
                 <div className="flex jus items-end max-lg:py-5 lg:pl-10 gap-5 lg:w-[40%]">
-                    <div className="tool text-[30px] rounded-[30px] flex flex-col h-[300px] w-full lg:justify-center p-5 border-[#2e2e2e] relative border">
-                        <div className="text-sm text-[#ffffff7c]">I constantly try to improve</div>
-                        <div className="d">My tech stack</div>
+                    <div className="stackdiv text-[30px] rounded-[30px] flex flex-col h-[300px] w-full lg:justify-center p-5 border-[#2e2e2e] relative border">
+                        <div className="text-sm text-[#ffffff7c] stack">I constantly try to improve</div>
+                        <div className="d stack">My tech stack</div>
                         <div className="languages flex flex-wrap py-2 pt-4 gap-3">
                             <Tooltip name='HTML'>
                                 <AiFillHtml5 />
@@ -124,9 +182,9 @@ const AboutSection = () => {
 
             </div>
 
-            <div className="flex lg:py-5">
-                <div className="flex justify-between gap-5 max-sm:flex-col">
-                    <div className="tool border -10 text-[30px] max-md:text-[24px] p-5 text-center pt-10 font-bold leading-[30px] rounded-[30px] flex-grow  w-full border-[#2e2e2e] ">
+            <div className="flex bt lg:py-5">
+                <div className="flex justify-between overflow-hidden gap-5 max-sm:flex-col">
+                    <div className="border -10 text-[30px] max-md:text-[24px] p-5 text-center pt-10 font-bold relative leading-[30px] rounded-[30px] flex-grow  w-full border-[#2e2e2e] ">
                         <div className="ques text-[32px] max-md:text-[24px] grad">
                             Do you want to build a project together...?
                         </div>
@@ -137,8 +195,8 @@ const AboutSection = () => {
 
                     </div>
 
-                    <div className="last border text-[30px] max-md:text-[24px] rounded-[30px] flex flex-col flex-grow w-full justify-center p-5 border-[#2e2e2e] relative overflow-hidden">
-                        <div className="d font-bold text-center px-5 z-20">Tech Enthusiast with a passion for Development</div>
+                    <div className="lastdiv border text-[30px] max-md:text-[24px] rounded-[30px] flex flex-col flex-grow w-full justify-center p-5 border-[#2e2e2e] relative overflow-hidden">
+                        <div className="d last font-bold text-center px-5 z-20">Tech Enthusiast with a passion for Development</div>
                         <div className="spinner absolute left-[90%]">
                             <div className="spinner1"></div>
                         </div>

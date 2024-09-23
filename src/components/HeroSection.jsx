@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 import Tooltip from './Tooltip'
 import sukuna from '../assets/sukuna.jfif'
 import { ReactTyped } from 'react-typed'
+import SplitText from 'split-type'
 import { FaGithub } from 'react-icons/fa'
 import { AiFillTwitterSquare } from 'react-icons/ai'
 import { BsLinkedin } from 'react-icons/bs'
-import SplitText from 'split-type'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
 
@@ -19,21 +19,83 @@ const HeroSection = () => {
             document.querySelector('.mins').textContent = dispt[1]
         }, 100);
 
-    })
-    useEffect(() => {
-        setInterval(() => {
-            var disp = new Date().toDateString()
-            document.querySelector('.date').textContent = disp
-        }, 100);
-    })
-    useEffect(() => {
+        gsap.fromTo('.check', 1.5, {
+            opacity: 0,
+            top: '100%',
+            duration: 0.5,
+            ease: 'expo.out',
+            // stagger: { amount: 0.3 }
+        }, {
+            opacity: 1,
+            top: '70%',
+            duration: 0.5,
+            ease: 'expo.out',
+            // stagger: { amount: 0.3 }
+        })
+
+        gsap.fromTo('.span', 5, {
+            opacity: 0,
+            delay: 5
+        }, {
+            opacity: 1,
+            // stagger: { amount: 0.3 }
+        })
+
+        const sofela = new SplitText('.sofela')
+        const rig = new SplitText('.rig')
+        const rig1 = new SplitText('.rig1')
         gsap.registerPlugin(ScrollTrigger)
 
-        const line = document.querySelectorAll(".line")
-        line.forEach(li => {
-            li.style.display = 'inline-block'
-            li.style.textAlign = 'left'
+
+        gsap.from(sofela.chars, {
+            // scrollTrigger: {
+            //     trigger: sofela.words,
+            //     start: 'top 60%',
+            //     end: 'bottom 15%',
+            //     // scrub: 1,
+            //     markers: true,
+            //     toggleActions: 'restart reverse restart none'
+            // },
+            opacity: 0,
+            yPercent: 100,
+            duration: 0.25,
+            ease: 'expo.out',
+            delay: 2.5,
+            stagger: { amount: 0.3 }
         })
+        gsap.from(rig.words, {
+            // scrollTrigger: {
+            //     trigger: sofela.words,
+            //     start: 'top 60%',
+            //     end: 'bottom 15%',
+            //     // scrub: 1,
+            //     markers: true,
+            //     toggleActions: 'restart reverse restart none'
+            // },
+            opacity: 0,
+            yPercent: 100,
+            duration: 0.5,
+            ease: 'expo.out',
+            delay: 1.5,
+            // stagger: { amount: 0.3 }
+        })
+        gsap.from(rig1.words, {
+            // scrollTrigger: {
+            //     trigger: sofela.words,
+            //     start: 'top 60%',
+            //     end: 'bottom 15%',
+            //     // scrub: 1,
+            //     markers: true,
+            //     toggleActions: 'restart reverse restart none'
+            // },
+            opacity: 0,
+            yPercent: 100,
+            duration: 0.5,
+            ease: 'expo.out',
+            delay: 2,
+            // stagger: { amount: 0.3 }
+        })
+
     })
     return (
         <section id="home" className="hero-section top-0 md:h-[100vh] relative px-20 max-md:p-5 lg:pr-0 flex max-lg:flex-col py-40 bg-[#0a0a0a] overflow-hidden max-lg:justify-center max-md:py-40 max-lg:gap-5 max-lg:items-center z-[10000]">
@@ -50,19 +112,19 @@ const HeroSection = () => {
             </div>
 
             <div className="left w-1/3 z-2 max-lg:w-full relative z-[1000] max-lg:text-center self-center">
-                <div className="tell hand backdrop-blur-[5px] border border-[#2d2d2d]">
+                <div className="tell max-md:hidden hand backdrop-blur-[5px] border border-[#2d2d2d]">
                     <span>This developer has no pictures</span>
                 </div>
+
                 <div className="w-36 max-md:w-28 max-md:h-28 photo h-36 z-[10000000] rounded-full my-5 max-lg:mx-auto overflow-hidden">
                     <img src={sukuna} className="h-[100%] object-cover" alt="" />
                 </div>
 
-
-                <div className="flex max-lg:w-fit max-lg:mx-auto relative md:items-end gap-7 text-[50px] font-bold max-md:text-[30px] join max-md:py-2">
-
+                <div className="sofela max-lg:w-fit max-lg:mx-auto relative md:items-end gap-7 text-[50px] font-bold max-md:text-[30px] join max-md:py-2">
                     Hello! I'm Sofela Israel
                 </div>
-                <ReactTyped strings={[
+
+                <ReactTyped className='span' strings={[
                     'Web Developer',
                     'Chess Enthusiast',
                     'MERN Stack Developer',
@@ -91,10 +153,10 @@ const HeroSection = () => {
             </div>
 
             <div className="right max-lg:text-center max-lg:w-full max-md:gap-5 w-2/3 flex flex-col items-end z-[200] relative self-center p-5">
-                <div className="leading-[40px] text-[40px] flex grad max-md:text-[24px] max-md:leading-[20px] py-5 w-1/2 max-lg:w-[80vw] max-md:mx-auto max-lg:flex max-lg:px-20 max-md:p-0 justify-center">
+                <div className="leading-[40px] relative rig1 text-[40px] flex gra max-md:text-[24px] max-md:leading-[20px] py-5 w-1/2 max-lg:w-[80vw] max-md:mx-auto max-lg:flex max-lg:px-20 max-md:p-0 justify-center">
                     A MERN stack developer based in Lagos, Nigeria
                 </div>
-                <div className="text-[16px] max-md:text-[12px] w-1/2 max-lg:w-full max-lg:px-20 max-md:p-0">
+                <div className="text-[16px] max-md:text-[12px] w-1/2 max-lg:w-full max-lg:px-20 max-md:p-0 rig relative">
                     Transforming Concepts into Seamless User Experiences, I prioritize client collaboration, fostering open communications
                 </div>
             </div>

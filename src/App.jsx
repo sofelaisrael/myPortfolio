@@ -4,8 +4,10 @@ import Lenis from '@studio-freight/lenis'
 import gsap from 'gsap'
 import Home from './components/Home'
 import { ScrollTrigger } from 'gsap/all'
+import SplitText from 'split-type'
 
 function App() {
+
   const [load, setLoad] = useState(false)
 
   useEffect(() => {
@@ -22,13 +24,13 @@ function App() {
 
   }, [])
   window.onload = () => {
-      setLoad(true)
-      setTimeout(() => {
-        setLoad(false)
-      }, 2000);
-    }
+    setLoad(true)
+    setTimeout(() => {
+      setLoad(false)
+    }, 2000);
+  }
   useEffect(() => {
-    
+
     gsap.to('.loa', {
       left: '-200%',
       duration: 1.6,
@@ -41,6 +43,8 @@ function App() {
       ease: 'expo.out',
       delay: 3
     })
+
+    
   })
 
 
@@ -179,6 +183,9 @@ function App() {
         <div className="fixed lo z-[100000000] w-[170vw] h-[100vh] top-0 skew-x-12 bg-[#0a0a0a] loa -left-20"></div>
         <div className="fixed lo z-[10000000] w-[170vw] h-[100vh] top-0 skew-x-12 bg-[#0a0a0a] loa2 md:-right-20"></div>
         <Home />
+        {/* <div className="h-[100vh] bg-gray-900"></div>
+        <div className="text-[60px] text-white text-center relative skills w-1/3 leading-[50px]">Hello world, the time has come for the sun to shine</div>
+        <div className="h-[100vh] bg-gray-900"></div> */}
       </div>
 
 

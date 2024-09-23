@@ -6,7 +6,7 @@ import { useNavigate, Link } from 'react-router-dom'
 const Project = ({ img, content, name, link, lang }) => {
     const navigate = useNavigate()
     return (
-        <div className="card max-md:w-full h-full max-md:h-[300px] border border-[#414141]">
+        <div className="card car relative max-md:w-full h-full max-md:h-[300px] border border-[#414141]">
             <div className="projectimg h-[100%] rounded-[inherit] w-[100%] overflow-hidden" id="noise">
                 <img src={img} className="object-cover max-md:object-left -full max-xl:h-full max-md:w-full " alt="" />
             </div>
