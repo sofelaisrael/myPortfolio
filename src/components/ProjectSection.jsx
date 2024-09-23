@@ -5,34 +5,12 @@ import gsap from 'gsap'
 
 const ProjectSection = () => {
     const [more, setMore] = useState(true)
-    useEffect(() => {
-        const cards = document.querySelectorAll('#card > div')
-        cards.forEach(card => {
-            card.style.opacity = 1
-            card.style.top = 0
-            gsap.from(card, {
-                scrollTrigger: {
-                    trigger: card,
-                    start: '60% 90%',
-                    end: '60% 15%',
-                    toggleActions: 'play pause complete complete'
-                },
-                top: 200,
-                opacity: 0
-
-            })
-        })
-
-    }, [])
     return (
         <section className="projects p-10 max-md:pt-20 max-md:p-5 overflow-x-hidden" id="projects">
             <div className="heading text-[50px] max-md:text-[28px] pb-10">
                 <span className="md:px-2">//</span>
                 My Projects
                 <span id='hash' className="text-[#ff00ff] hash relative">#</span>
-            </div>
-            <div className="texts text-[60px] py-10">
-                Some of my works
             </div>
             <div id="card">
                 {(more ? projects.slice(0, 3) : projects).map(proj => (

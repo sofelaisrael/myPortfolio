@@ -230,12 +230,6 @@ const Home = () => {
             <footer className="h-[100px] bg-black flex justify-center items-center gap-5">
                 <div className="marquee overflow-hidden">
                     <div className="marquee-track h-[50px] w-full h-ful relative">
-                        {/* <div className="marquee-item h-full">
-                            <h2 className="marquee-text h-full text-[40px] flex items-center"></h2>
-                            <h2 className="marquee-text h-full text-[40px]"></h2>
-                            <h2 className="marquee-text h-full text-[40px] flex items-center"><BiCopyright />2024</h2>
-                            <h2 className="marquee-text h-full text-[40px] flex items-center">Made with <AiFillHeart color="red" /></h2>
-                        </div> */}
                         <div className="marquee-item h-full">
                             <h2 className="marquee-text flex justify-center items-center text-[28px] gap-3">Made with <AiFillHeart color="red" /></h2>
                         </div>

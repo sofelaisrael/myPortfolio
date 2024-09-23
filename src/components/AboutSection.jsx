@@ -15,7 +15,6 @@ import '../App.css'
 const AboutSection = () => {
     useEffect(() => {
         const skills = new SplitText('#skills')
-        // const stack = new SplitText('.stack div')
         gsap.registerPlugin(ScrollTrigger)
 
         skills.lines.forEach(word => {
@@ -34,8 +33,6 @@ const AboutSection = () => {
         })
         const stack = new SplitText('.stack')
         const last = new SplitText('.last')
-        // gsap.registerPlugin(ScrollTrigger)
-
 
         gsap.from(stack.words, {
           scrollTrigger: {
@@ -65,45 +62,6 @@ const AboutSection = () => {
           ease: 'back.out',
           stagger: { amount: 0.5 }
         })
-
-
-        // ScrollTrigger.create({
-        //     trigger: self,
-        //     start: 'top 60%',
-        //     markers: true,
-        //     onEnter: () => tl.play(),
-        //     onLeaveBack: () => tl.reverse()
-        // })
-
-        // stack.lines.forEach(st => {
-
-        //     gsap.from(st, {
-        //         scrollTrigger: {
-        //             trigger: st,
-        //             start: 'top 70%',
-        //             end: 'bottom 50%',
-        //             // markers: true,
-        //             scrub: true
-        //         },
-
-        //         duration: 0.7,
-        //     })
-
-        // })
-
-        // gsap.to('.tol', {
-        //     scrollTrigger: {
-        //         trigger: '.bt',
-        //         start: 'center 70%',
-        //         end: 'end 40%',
-        //         markers: true,
-        //         toggleActions: 'play complete reverse complete'
-        //         // scrub: true
-        //     },
-        //     top: 0,
-        //     opacity: 1,
-        //     duration: 0.5,
-        // })
     })
 
     const copy = () => {
@@ -124,7 +82,7 @@ const AboutSection = () => {
             <div className="deafult"></div>
 
             <div className="flex tup max-lg:flex-col">
-                <div id="skills" className="skills pt-16 md:pt-32 rounded-[30px] text-[60px] lg:w-[60%] max-lg:w-[90%] md:px-10 px-5 pb-10 font-extrabold leading-[65px] backdrop-blur-sm max-md:leading-[40px] border-0 max-md:text-[40px]">
+                <div id="skills" className="skills pt-16 md:pt-32 rounded-[30px] text-[60px] lg:w-[60%] max-lg:w-[100%] md:px-10 px-5 pb-10 font-extrabold leading-[65px] backdrop-blur-sm max-md:leading-[40px] border-0 max-md:text-[40px]">
                     Passionate and Creative Full Stack Developer
                     having Proficiency in MERN Stack. Attired with a variety of tools and technologies  and keen to learn a new one.
                 </div>
