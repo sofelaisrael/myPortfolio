@@ -91,7 +91,7 @@ html {
 }
 
 * {
-  /* cursor: none; */
+  cursor: none;
 }
 
 *::selection {
