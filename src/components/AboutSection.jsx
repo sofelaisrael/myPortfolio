@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import { BsCheckLg } from "react-icons/bs"; 
+import React, { useState, useEffect, useRef } from 'react'
 import Tooltip from './Tooltip'
 import { AiFillHtml5 } from 'react-icons/ai'
 import { DiCss3, DiJsBadge, DiReact } from 'react-icons/di'
@@ -12,7 +13,8 @@ import { ScrollTrigger } from 'gsap/all'
 import '../App.css'
 
 
-const AboutSection = () => {
+const AboutSection = ({ reff }) => {
+    const copied = useRef(false)
     useEffect(() => {
         const skills = new SplitText('#skills')
         gsap.registerPlugin(ScrollTrigger)
@@ -54,7 +56,7 @@ const AboutSection = () => {
             trigger: '.lastdiv',
             start: 'center 90%',
             end: 'center 25%',
-            toggleActions: 'play reverse restart reverse'
+            toggleActions: 'play pause pause pause'
           },
           opacity: 0,
           yPercent: 100,
@@ -68,10 +70,13 @@ const AboutSection = () => {
         navigator.clipboard.writeText('sofelaisrael@gmail.com')
         const copytextspan = document.querySelector('.copy span')
         copytextspan.textContent = 'copied'
+        copied.current = true
         setTimeout(() => {
             copytextspan.textContent = 'copy my email address'
+            copied.current = false
         }, 2000);
     }
+
     return (
         <section className="about-me relative px-10 max-md:px-2 bg-[#0a0a0a]" id="about">
             <div className="heading text-[50px] max-md:text-[28px]">
@@ -146,8 +151,11 @@ const AboutSection = () => {
                         <div className="ques text-[32px] max-md:text-[24px] grad">
                             Do you want to build a project together...?
                         </div>
-                        <div className="copy text-[16px] p-3 flex gap-3 justify-center items-center border w-fit mx-auto rounded-full mt-10" onClick={copy}>
-                            <IoCopyOutline />
+                        <div className="copy text-[16px] p-4 flex gap-3 justify-center items-center border w-fit mx-auto rounded-full mt-10" onClick={copy}>
+                            {
+                                copied.current ? <BsCheckLg /> : <IoCopyOutline />
+                            }
+                            
                             <span>copy my email address</span>
                         </div>
 
