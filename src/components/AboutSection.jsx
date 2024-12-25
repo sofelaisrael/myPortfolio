@@ -107,7 +107,7 @@ const AboutSection = ({ reff }) => {
                     having Proficiency in MERN Stack. Attired with a variety of tools and technologies  and keen to learn a new one.
                 </div>
 
-                <div id="skills1" className="skills md:hidden pt-16 md:pt-32 rounded-[30px] px-5 pb-10 font-extrabold backdrop-blur-sm leading-[40px] border-0 text-[40px]">
+                <div id="skills1" className="skills md:hidden pt-16 md:pt-32 rounded-[30px] px-5 pb-10 font-extrabold backdrop-blur-sm leading-[40px] border-0 text-[32px]">
                     Passionate and Creative Full Stack Developer
                     having Proficiency in MERN Stack. Attired with a variety of tools and technologies  and keen to learn a new one.
                 </div>
