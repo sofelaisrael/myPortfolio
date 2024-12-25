@@ -290,6 +290,20 @@ body {
   -webkit-background-clip: text;
   position: relative;
 }
+#skills1 .line {
+  text-wrap: nowrap;
+  background: linear-gradient(
+    to right,
+    rgb(255, 255, 255) 50%,
+    rgb(37, 37, 37) 50%
+  );
+  background-size: 200% 100%;
+  background-position-x: 0%;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  position: relative;
+}
 
 /* gradient spinner */
 .spinner {

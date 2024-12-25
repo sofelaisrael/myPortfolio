@@ -17,9 +17,24 @@ const AboutSection = ({ reff }) => {
     const copied = useRef(false)
     useEffect(() => {
         const skills = new SplitText('#skills')
+        const skillsmobile = new SplitText('#skills1')
         gsap.registerPlugin(ScrollTrigger)
 
         skills.lines.forEach(word => {
+
+            gsap.from(word, {
+                scrollTrigger: {
+                    trigger: word,
+                    start: 'top 70%',
+                    end: 'bottom 50%',
+                    scrub: true
+                },
+                backgroundPositionX: '100%',
+                duration: 10,
+            })
+
+        })
+        skillsmobile.lines.forEach(word => {
 
             gsap.from(word, {
                 scrollTrigger: {
@@ -87,7 +102,12 @@ const AboutSection = ({ reff }) => {
             <div className="deafult"></div>
 
             <div className="flex tup max-lg:flex-col">
-                <div id="skills" className="skills pt-16 md:pt-32 rounded-[30px] text-[60px] lg:w-[60%] max-lg:w-[100%] md:px-10 px-5 pb-10 font-extrabold leading-[65px] backdrop-blur-sm max-md:leading-[40px] border-0 max-md:text-[40px]">
+                <div id="skills" className="skills max-md:hidden pt-16 md:pt-32 rounded-[30px] text-[60px] lg:w-[60%] max-lg:w-[100%] md:px-10 px-5 pb-10 font-extrabold leading-[65px] backdrop-blur-sm max-md:leading-[40px] border-0 max-md:text-[40px]">
+                    Passionate and Creative Full Stack Developer
+                    having Proficiency in MERN Stack. Attired with a variety of tools and technologies  and keen to learn a new one.
+                </div>
+
+                <div id="skills1" className="skills md:hidden pt-16 md:pt-32 rounded-[30px] text-[60px] lg:w-[60%] max-lg:w-[100%] md:px-10 px-5 pb-10 font-extrabold leading-[65px] backdrop-blur-sm max-md:leading-[40px] border-0 max-md:text-[40px]">
                     Passionate and Creative Full Stack Developer
                     having Proficiency in MERN Stack. Attired with a variety of tools and technologies  and keen to learn a new one.
                 </div>
